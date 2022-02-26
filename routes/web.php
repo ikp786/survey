@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Front\SurveyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,11 @@ Route::get('/', function () {
 */
 Route::post('login', [AdminController::class, 'login'])->name('admin.login');
 
+// FRONT PANEL ROUTE
 
+Route::group(['prefix'  => 'front'],function(){
+    Route::post('save-survey-uniqueId-by-creator',[SurveyController::class,'saveSurveyUniqueIdByCreator'])->name('front.save-survey-uniqueId-by-creator');
+});
 
 // ADMIN PANEL ROUTE
 Route::group(['prefix' => 'admin'], function () {
@@ -67,9 +72,8 @@ Route::group(['prefix' => 'admin'], function () {
 |--------------------------------------------------------------------------
 */
         Route::resource('questions', QuestionController::class);
-
+        Route::resource('questionss', QuestionController::class);
         Route::get('question/{slug}',[QuestionController::class,'index'])->name('admin.question.index');
-
         /*
 |--------------------------------------------------------------------------
 | LOGOUT

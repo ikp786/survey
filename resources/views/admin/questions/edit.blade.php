@@ -71,7 +71,8 @@
                         $cnt = 0;
                         @endphp
                         @foreach(json_decode($questions->options->value) as $val)
-                        <input type="text" name="option[{{$cnt}}]" value="{{$val}}" class="form-control add_dropdown delete_dropdown{{$cnt}}" data-count="{{$cnt}}" id="add_dropdown"><button class="delete_dropdown{{$cnt}}" onclick="remove_dropdown({{$cnt}})" type="button">X</button><label for="floatingInput">Option</label>
+                        <input type="text" name="option[{{$cnt}}]" value="{{$val}}" class="form-control add_dropdown delete_dropdown{{$cnt}}" data-count="{{$cnt}}" id="add_dropdown">
+                        @if($cnt != 0)<button class="delete_dropdown{{$cnt}}" onclick="remove_dropdown({{$cnt}})" type="button">X</button>@endif<label for="floatingInput">Option</label>
                         @php $cnt++; @endphp
                         @endforeach
                         @else

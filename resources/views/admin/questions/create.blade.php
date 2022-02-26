@@ -34,6 +34,7 @@
                 <form action="{{route('questions.store')}}" method="POST">
                     @csrf
                     <h6 class="mb-4">Add Question</h6>
+                    <h6 style=" float: right;margin-top: -45px;" class="mb-4"> <a href="{{route('admin.question.index','basic')}}"><button type="button" style="color: #009CFF;" class="btn">List</button> </a> </h6> 
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" checked name="type" value="basic">
                         <label class="form-check-label" for="inlineRadio1">Basic</label>

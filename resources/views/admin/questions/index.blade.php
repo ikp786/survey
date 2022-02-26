@@ -9,7 +9,12 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Question List {{ collect(request()->segments())->last(); }}</h6>
+            @include('admin.inc.validation_message')
+                @include('admin.inc.auth_message')
+                <h6 class="mb-4">Question List {{ collect(request()->segments())->last(); }}</h6>  
+                
+                    <h6 style=" float: right;margin-top: -45px;" class="mb-4"> <a href="{{route('questions.create')}}"><button style="color: #009CFF;" class="btn">Add</button> </a> </h6> 
+                    
                 <div class="table-responsive">
                     <table class="table" id="dataTable_2">
                         <thead>
@@ -23,7 +28,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            d
                             @php $cnt =1; @endphp
                             @forelse($questions as $val)
                             <tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\QuestionCreateRequest;
+use App\Http\Requests\Admin\QuestionUpdateRequest;
 use App\Models\Option;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -15,13 +16,13 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($slug ='')
+    public function index($slug = '')
     {
         // echo $slug;die;
-        $questions = Question::where('type',$slug)->with('options')->latest()->get();        
+        $questions = Question::where('type', $slug)->with('options')->latest()->get();
         $title = 'Questions';
-        $data  = compact('questions','title');
-        return view('admin.questions.index',$data);
+        $data  = compact('questions', 'title');
+        return view('admin.questions.index', $data);
     }
 
     /**
@@ -42,6 +43,7 @@ class QuestionController extends Controller
      */
     public function store(QuestionCreateRequest $request)
     {
+        try {
         $question = new Question();
         $question->fill($request->only('question', 'type'));
         $question->save();
@@ -57,6 +59,10 @@ class QuestionController extends Controller
         }
         $option->save();
         return redirect()->route('admin.questions')->with('Success', 'Question added success');
+    } catch (\Throwable $e) {
+        \DB::rollback();
+        return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
+    }
     }
 
     /**
@@ -80,8 +86,8 @@ class QuestionController extends Controller
     {
         $questions  = Question::findOrFail($id);
         $title      = 'Edit Question';
-        $data       =  compact('questions','title');
-        return view('admin.questions.edit',$data);
+        $data       =  compact('questions', 'title');
+        return view('admin.questions.edit', $data);
     }
 
     /**
@@ -91,9 +97,29 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionUpdateRequest $request, $id)
     {
-        //
+        try {
+            $questions  = Question::findOrFail($id);
+            $questions->fill($request->only('question', 'type'));
+            $questions->save();
+
+            Option::where('question_id', $id)->delete();
+            $option = new Option();
+            $option->question_id     =  $questions->id;
+            $option->question_type   =  $request->type;
+            $option->type            =  $request->select_option_type;
+
+            if ($request->select_option_type == 'dropdown' || $request->select_option_type == 'radio') {
+                $data = array_filter($request->option);
+                $option->value =  json_encode($data);
+            }
+            $option->save();
+            return redirect()->route('admin.question.index', $request->type)->with('Success', 'Question added success');
+        } catch (\Throwable $e) {
+            \DB::rollback();
+            return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
+        }
     }
 
     /**
@@ -104,6 +130,14 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Option::where('question_id', $id)->delete();
+            $question = Question::find($id);
+            $question->delete();
+            return redirect()->back()->with(['Success' => "Questions deleted success."]);
+        } catch (\Throwable $e) {
+            \DB::rollback();
+            return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
+        }
     }
 }
