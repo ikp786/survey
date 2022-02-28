@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Option extends Model
+class State extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
-        'question_id',
-        'value',
-        'type',
-        'question_type'
+        'name',
     ];
 }

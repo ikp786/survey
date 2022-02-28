@@ -3,6 +3,7 @@
 <!-- Mirrored from technext.github.io/dashmin/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Feb 2022 06:11:32 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
 <head>
     <meta charset="utf-8">
     <title>ADMIN - Login</title>
@@ -40,16 +41,18 @@
                 {!! Form::open(array('route' => 'admin.login','method'=>'POST')) !!}
                 @csrf
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    @include('admin.inc.validation_message')
+                    @include('admin.inc.auth_message')
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">
-                        {!! Form::email('email', null, array('placeholder' => 'E-mail','id'=>'floatingInput','class' => 'form-control')) !!}                            
+                            {!! Form::email('email', null, array('placeholder' => 'E-mail','id'=>'floatingInput','class' => 'form-control')) !!}
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating mb-4">
-                        
+
                             <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
@@ -75,4 +78,5 @@
     <script src="{{ asset('assets/admin/js/main.js')}}"></script>
 </body>
 <!-- Mirrored from technext.github.io/dashmin/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Feb 2022 06:11:32 GMT -->
+
 </html>

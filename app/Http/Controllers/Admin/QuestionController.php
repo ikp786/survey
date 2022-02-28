@@ -58,7 +58,7 @@ class QuestionController extends Controller
             $option->value =  json_encode($data);
         }
         $option->save();
-        return redirect()->route('admin.questions')->with('Success', 'Question added success');
+        return redirect()->route('admin.question.index',$request->type)->with('Success', 'Question added success');
     } catch (\Throwable $e) {
         \DB::rollback();
         return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
@@ -115,7 +115,7 @@ class QuestionController extends Controller
                 $option->value =  json_encode($data);
             }
             $option->save();
-            return redirect()->route('admin.question.index', $request->type)->with('Success', 'Question added success');
+            return redirect()->route('admin.question.index', $request->type)->with('Success', 'Question update success');
         } catch (\Throwable $e) {
             \DB::rollback();
             return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
