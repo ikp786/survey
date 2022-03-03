@@ -11,50 +11,52 @@
 @section('content')
 <!-- Sale & Revenue Start -->
 <div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-chart-line fa-3x text-primary"></i>
+   <div class="main-section">
+        <div class="row g-4">
+        <div class="col-sm-6 col-xl-6">
+            <div class="rounded border-light d-flex align-items-center justify-content-between p-4 admin-main-box">
+                <i class="fa fa-chart-line fa-3x text-gagan"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h5 class="mb-2">Registered Users</h5>
+                    <h4 class="mb-0 text-center">1005</h4>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-chart-bar fa-3x text-primary"></i>
+        <div class="col-sm-6 col-xl-6">
+            <div class="rounded border-light d-flex align-items-center justify-content-between p-4 admin-main-box">
+                <i class="fa fa-chart-bar fa-3x text-gagan"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h5 class="mb-2">Total Survey</h5>
+                    <h4 class="mb-0 text-center">1234</h4>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-chart-area fa-3x text-primary"></i>
+        <div class="col-sm-6 col-xl-6">
+            <div class="rounded border-light d-flex align-items-center justify-content-between p-4 admin-main-box">
+                <i class="fa fa-chart-area fa-3x text-gagan"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Revenue</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h5 class="mb-2">Active Survey</h5>
+                    <h4 class="mb-0 text-center">59872</h4>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-chart-pie fa-3x text-primary"></i>
+        <div class="col-sm-6 col-xl-6">
+            <div class="rounded border-light d-flex align-items-center justify-content-between p-4 admin-main-box">
+                <i class="fa fa-chart-pie fa-3x text-gagan"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Revenue</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h5 class="mb-2">New Users</h5>
+                    <h4 class="mb-0 text-center">159357</h4>
                 </div>
             </div>
         </div>
     </div>
+   </div>
 </div>
 <!-- Sale & Revenue End -->
 
 
 <!-- Sales Chart Start -->
-<div class="container-fluid pt-4 px-4">
+<!-- <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light text-center rounded p-4">
@@ -75,12 +77,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Sales Chart End -->
 
 
 <!-- Recent Sales Start -->
-<div class="container-fluid pt-4 px-4">
+<!-- <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Recent Salse</h6>
@@ -149,12 +151,12 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Recent Sales End -->
 
 
 <!-- Widgets Start -->
-<div class="container-fluid pt-4 px-4">
+<!-- <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-light rounded p-4">
@@ -271,6 +273,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection
     

@@ -31,16 +31,21 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/admin/css/style.css')}}" rel="stylesheet">
+    <style type="text/css">
+        .w-40{
+            width: 40%;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
+    <div class="position-relative bg-white d-flex p-0">
         <!-- Sign In Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 {!! Form::open(array('route' => 'admin.login','method'=>'POST')) !!}
                 @csrf
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="w-40 m-auto">
                     @include('admin.inc.validation_message')
                     @include('admin.inc.auth_message')
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
@@ -48,13 +53,14 @@
                             <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">
-                            {!! Form::email('email', null, array('placeholder' => 'E-mail','id'=>'floatingInput','class' => 'form-control')) !!}
                             <label for="floatingInput">Email address</label>
+                            {!! Form::email('email', null, array('placeholder' => 'E-mail','id'=>'floatingInput','class' => 'form-control')) !!}
+                            
                         </div>
                         <div class="form-floating mb-4">
-
-                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                            
                         </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                     </div>

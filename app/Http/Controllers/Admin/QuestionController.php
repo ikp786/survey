@@ -32,7 +32,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('admin.questions.create');
+        $title      = 'Add Question';
+        $data       =  compact('title');
+        return view('admin.questions.create',$data);
     }
 
     /**

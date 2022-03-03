@@ -32,7 +32,7 @@
                 @include('admin.inc.auth_message')
                 {!! Form::model($questions, ['method' => 'PATCH','route' => ['questions.update', $questions->id],'files'=>true]) !!}
                 @csrf
-                <h6 class="mb-4">Add Question</h6>
+                <h6 class="mb-4">Edit Question</h6>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" {{ ($questions->type== 'basic') ?  "checked" : "" }} name="type" value="basic">
                     <label class="form-check-label" for="inlineRadio1">Basic</label>
@@ -113,7 +113,7 @@
             $('#add_option_div').html(content);
         }
     });
-    $(document).on('click', 'input[id^="add_dropdown"]', function() {
+    $(document).on('click keypress', 'input[id^="add_dropdown"]', function() {
         var dataid = $(this).data("count");
         var class_count = $('body').find('.add_dropdown').length;
         dataid++;

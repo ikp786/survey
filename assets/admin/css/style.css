@@ -124,18 +124,18 @@
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
     padding: 7px 20px;
-    color: var(--dark);
+    color: #0b9962;
     font-weight: 500;
-    border-left: 3px solid var(--light);
-    border-radius: 0 30px 30px 0;
+    border-right: 3px solid #0b9962; 
     outline: none;
+        font-size: 16px;
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: #471e66;
     background: #FFFFFF;
-    border-color: var(--primary);
+    border-color: #471e66;
 }
 
 .sidebar .navbar .navbar-nav .nav-link i {
@@ -169,8 +169,14 @@
 }
 
 .sidebar .navbar .dropdown-item {
-    padding-left: 25px;
-    border-radius: 0 30px 30px 0;
+        padding-left: 65px;
+    font-size: 13px;
+    border: 1px solid #ffffff;
+    }
+
+    .dropdown-item:hover, .dropdown-item:focus {
+    color: #1e2125;
+    background-color: #1b973985 !important;
 }
 
 .content .navbar .navbar-nav .nav-link {
@@ -274,4 +280,105 @@
 .testimonial-carousel .owl-dot.active {
     background: var(--dark);
     border-color: var(--primary);
+}
+
+/*.bg-light {
+    background-color: #eafff7 !important;
+}*/
+.text-gagan{
+    color: #23c686 !important;
+        font-size: 80px !important; 
+}
+
+.form-floating label{
+    position: relative;
+    padding: 0;
+    font-size: 12px;
+    top: 5px;
+    margin-bottom: 10px;
+}
+.form-floating input {
+    /*background: transparent;*/
+      /* border-radius: 10px; */
+    border: 1px solid #c5c5c5;
+    padding: 10px !important;
+    height: auto !important;
+    width: 100%;
+    margin-bottom: 10px !important;
+}
+#select_question_type{
+/*    background: transparent;*/
+    border: 1px solid #c5c5c5;
+    /* border-radius: 10px; */
+    
+    padding: 13px !important;
+    height: auto !important;
+    width: 100%;
+    margin-bottom: 10px !important;
+    font-size: 12px; 
+}
+.main-title-heading {
+    padding: 10px 0; 
+    border-radius: 10px;
+    margin-bottom: 21px;
+}
+.main-title-heading h6{
+    color: #168d5f;
+    font-size: 20px;
+}
+.main-title-heading button{
+     background-color: #3ccc93;
+    border-color: #4dd09d;
+    color: #fff;
+    padding: 0 20px !important; 
+    border-radius: 5px;
+}
+.qus-submit-btn{
+        background-color: #3ccc93;
+    border-color: #4dd09d;
+    color: #fff;
+}
+
+
+.border-light{
+        box-shadow: 0 0 2px 0 #23c686 !important;
+}
+.admin-main-box{
+    margin-top: 60px;
+}
+.sidebar-toggler{
+    color: #3ccc93;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+a.paginate_button.current{
+        padding: 0 !important;
+    background: transparent !important;
+}
+a.previous, a.next{
+    font-size: 12px !important;
+}
+div#dataTable_2_info{
+    font-size: 12px !important;
+}
+div#dataTable_2_filter label {
+    font-size: 12px !important;
+    color: #000;
+}
+div#dataTable_2_filter input {
+    padding: 5px !important;
+}
+.dataTables_length select{
+    padding: 0 !important;
+}
+.dataTables_length{
+    margin-top: 3px !important;
+        float: right !important;
+    margin-left: 10px;
+    font-size: 12px;
 }

@@ -19,7 +19,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th>Crated At</th>
+                                <th>Created At</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

@@ -9,7 +9,7 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Admin</h6>
+                <h6 class="mb-0">Sunny Dhaliwal</h6>
                 <span>Admin</span>
             </div>
         </div>
@@ -23,7 +23,7 @@
                     <a href="{{route('admin.question.index','advance')}}" class="dropdown-item">Advance</a>
                 </div>
             </div>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-th me-2"></i>User List</a>
+            <a href="{{route('admin.users.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>User List</a>
             <a href="#" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Result</a>
             <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
             <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->

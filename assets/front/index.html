@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+
+    <title>survey portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style type="text/css">
+  
+ 
+
+#neon:hover span {
+  animation: flicker 1s linear forwards;
+}
+
+#neon:hover #e {
+  animation-delay: .2s;
+}
+
+#neon:hover #o {
+  animation-delay: .5s;
+}
+
+#neon:hover #n2 {
+  animation-delay: .6s;
+}
+#neon:hover #n3 {
+  animation-delay: .8s;
+}
+
+#neon:hover #n4 {
+  animation-delay: .9s;
+}
+#neon:hover #n5 {
+  animation-delay: 1s;
+}
+#neon:hover #n6 {
+  animation-delay: 1.3s;
+}
+#neon:hover #n7 {
+  animation-delay: 1.5s;
+}
+#neon:hover #n8 {
+  animation-delay: 1.6s;
+}
+
+@keyframes flicker {
+  0% {
+    color: #333;
+  }
+  5%, 15%, 25%, 30%, 100% {
+    color: #23c686; 
+  }
+  10%, 20% {
+    color: #23c686;
+    text-shadow: none;
+  }
+}
+
+#neon:focus {
+  outline: none;
+}
+#neon{
+  display: flex;
+  margin-left: 4px;
+      margin-top: 4px;
+    align-items: center; 
+}
+#neon span{
+  font-size: 37px;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin: 0;
+    margin-left: 1px;
+}
+.main-heading{
+  display: flex;
+}
+</style>
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo w-20">
+              <img src="./assets/images/logo.png" alt="">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="how-works.html">How it works</a></li>
+              <li class="scroll-to-section"><a href="who-we-are.html">Who we are</a></li>
+              <li class="scroll-to-section"><a href="term-condition.html">Term and Condition</a></li>
+              <li class="scroll-to-section"><div class="main-red-button"><a href="contact.html">Contact Now</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 wow fadeInBottom" data-wow-duration="1s" data-wow-delay="1s">
+          <div class="left-content private-session m-0">
+            <p class="text-center mt-0">Did someone send you a private session ID? Enter it here</p>
+            <form id="search" action="#" method="GET" class="m-auto">
+              <fieldset>
+                <input type="address" name="address" class="email" placeholder="Enter Code..." autocomplete="on" required>
+              </fieldset>
+              <fieldset>
+                <a href="email-1.html" class="main-button">Continue</a>
+              </fieldset>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+           <div class="left-content how-works mt-4 header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="maoin-heading-1">
+                    <h2 class="section-heading main-heading mb-3"><span>Welcome to</span>
+                  <span id="neon">
+                  <span id="n">W</span>
+                  <span id="e">a</span>
+                  <span id="o">g</span>
+                  <span id="n2">e</span>
+                  <span id="n3"> S</span>
+                  <span id="n4"> h</span>
+                  <span id="n5"> a</span>
+                  <span id="n6"> r</span>
+                  <span id="n7"> e</span>
+                  <span id="n8"> !</span>
+                </button></h2>
+                </div>
+              
+                <P class="lead fs-lg mb-4"><span class="">Wage Share offers a group of professionals a place to compare salary details openly and anonymously in pursuit of salary insight</span> </P>
+              </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content main-slider how-works header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                 
+                 
+                
+                <h4>Anonymous, Fast, and Free!</h4>
+                <p class="lead fs-lg esey-stepes"><span>Getting started is easy</span></p>
+                <ul class="started-steps">
+                  <li>  Create a new session ID below for your group.</li>
+                  <li>  Share the session ID with your group.</li>
+                  <li>  Fill in the questionnaire and we will email you the average salary
+Insights in an instant!.</li>
+                </ul>
+                <p class="lead fs-lg"><span class="web-tag-line">Insights in an instant! Now you’ll know how much you’re making against everyone else! </span></p>
+                <!-- <p class="lead fs-lg"><span>We email you the group’s average salary amount without asking your name!</span></p> -->
+                <form id="search" action="#" method="GET">
+                  <fieldset>
+                    <input type="address" name="address" class="email" placeholder="Create a new session ID here (ex. WAGE123)" autocomplete="on" required>
+                  </fieldset>
+                  <fieldset>
+                    <a href="email.html" class="main-button">Click to Start</a>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/slider-bg.png" alt="team meeting">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <section class="testimonial-section bg-color wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+    
+    <div class="testimonials-clean">
+      <div class="container">
+          <div class="intro">
+              <h2 class="text-center">Research Interviews </h2>
+              <!-- <p class="text-center">Our customers love us! Read what they have to say below. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p> -->
+          </div>
+          <div class="row people">
+              <div class="col-md-6 col-lg-4 item">
+                  <div class="box ">
+                      <p class="description"><i class="fa fa-quote-left"></i> In general, yes it would be great to know how my salary compares with my colleagues. I feel like that information is good to know as it could be used in salary negotiations. It also gives you confidence knowing that you’re being compensated fairly  <i class="fa fa-quote-right"></i></p>
+                      <!-- <div class="actuary-exp">
+                        <p>Actuary with 5 years of experience</p>
+                      </div> -->
+                      <div class="author">
+                    <div class="user-profil">
+                     <img class="rounded-circle" src="https://i.pinimg.com/originals/cd/30/70/cd3070a2136037debd9afc722a7a1fd6.jpg">
+                    </div>
+                       <h5 class="name">Victoia Nova</h5>
+                       <p class="title">Founder of Style Co.</p>
+                   </div>
+                  </div>
+                  
+              </div>
+              <div class="col-md-6 col-lg-4 item">
+                  <div class="box">
+                    <div class="qutoes-icon">
+                      
+                    </div>
+                      <p class="description"><i class="fa fa-quote-left"></i> I’m an onsite construction lead for a local housing developer. I met with another person in a similar role who worked for a different company. I was curious and asked what their responsibilities were and compared them to mine. I really wanted to compare salary but felt it was taboo and not appropriate. Salary was the last piece of the puzzle…the one that mattered most…but I couldn’t bring it up <i class="fa fa-quote-right"></i></p>
+                      <div class="qutoes-icon">
+                      
+                    </div>
+                     <!--  <div class="actuary-exp">
+                        <p>Business analyst with 7 years of experience</p>
+                      </div> -->
+                       <div class="author">
+                   <div class="user-profil">
+                    <img class="rounded-circle" src="https://sm.askmen.com/askmen_in/article/f/facebook-p/facebook-profile-picture-affects-chances-of-gettin_fr3n.jpg">
+                   </div>
+                      <h5 class="name">Mark Joseph</h5>
+                      <p class="title">Founder of Style Co.</p>
+                  </div>
+                  </div>
+                 
+              </div>
+              <div class="col-md-6 col-lg-4 item">
+                  <div class="box">
+                      <p class="description"><i class="fa fa-quote-left"></i> Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.  <i class="fa fa-quote-right"></i></p>
+                      <!-- <div class="actuary-exp">
+                        <p>Construction lead with 12 years of experience</p>
+                      </div> -->
+                      <div class="author">
+                    <div class="user-profil">
+                     <img class="rounded-circle" src="https://i.imgur.com/o5uMfKo.jpg">
+                    </div>
+                       <h5 class="name">Carina Gill</h5>
+                       <p class="title">Founder of Style Co.</p>
+                   </div>
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+ </script>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+     
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="box line">
+            <div class="service-img">
+               <img src="./assets/images/5.png">
+            </div>
+            
+            <h4 class="title">
+              <a href="">Fast and Easy!</a>
+            </h4>
+            
+              <p class="description">
+                See the average salary for a group of colleagues or friends in under 3 minutes!
+            </p>
+            <!-- <div class="actuary-exp">
+              <p>Actuary with 5 years of experience</p>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box line">
+            <div class="service-img">
+               <img src="./assets/images/4.png">
+            </div>
+            
+            <h4 class="title">
+              <a href="">Free And Anonymous</a>
+            </h4>
+            
+              <p class="description">
+                No payment information required and no names collected. Just simple and valuable insight
+            </p>
+            <!-- <div class="actuary-exp">
+              <p>Actuary with 5 years of experience</p>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="service-img">
+              <img src="./assets/images/3.png">
+            </div>
+            
+            <h4 class="title">
+              <a href="">An Elegant Solution</a>
+            </h4>
+            
+              <p class="description">
+                Ensure you’re being compensated fairly using our secure, quick, and simple solution
+            </p>
+            <!-- <div class="actuary-exp">
+              <p>Actuary with 5 years of experience</p>
+            </div> -->
+          </div>
+        </div>   
+     
+  
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+          <ul class="social-icon">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+          </ul>
+          <p>© Copyright 2021 Servay Co. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/templatemo-custom.js"></script>
+
+</body>
+</html>

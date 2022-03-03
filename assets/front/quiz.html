@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>survey portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <link rel="stylesheet" href="quiz/css/animate.min.css">
+    <link rel="stylesheet" href="quiz/css/style.css">
+
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo w-25">
+              <img src="./assets/images/logo.png" alt="">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="how-works.html">How it works</a></li>
+              <li class="scroll-to-section"><a href="who-we-are.html">Who we are</a></li>
+              <li class="scroll-to-section"><a href="term-condition.html">Term and Condition</a></li>
+              <li class="scroll-to-section"><div class="main-red-button"><a href="contact.html">Contact Now</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="wrapper position-relative overflow-hidden">
+      <!-- Top content -->
+      <div class="container">
+         <div class="logo_area pt-5">
+            <a href="index.html">
+            </a>
+         </div>
+         <div class="step_progress">
+            <div class="d-flex overflow-hidden">
+               <div class="col-2">
+                  <div class="step d-inline-block position-relative rounded-pill active">1</div>
+               </div>
+               <div class="col-2 me-auto">
+                  <div class="step d-inline-block position-relative rounded-pill">2</div>
+               </div>
+               <div class="col-2 text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">3</div>
+               </div>
+               <div class="col-2 text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">4</div>
+               </div>
+               <!-- <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">5</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">7</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">8</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">9</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">10</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">11</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">13</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">14</div>
+               </div>
+               <div class="col text-end">
+                  <div class="step d-inline-block position-relative rounded-pill">15</div>
+               </div>  -->
+            </div>
+         </div>
+      </div>
+      <!-- Circles which indicates the steps of the form: -->
+      <div class="container">
+         <form class="multisteps_form" id="wizard" method="POST" action="thanks.html">
+            <!------------------------- Step-1 ----------------------------->
+            <div class="multisteps_form_panel">
+               <div class="content_box shadow text-center bg-white d-flex py-5 position-relative">
+                  <div class="form_timer d-flex flex-column rounded-pill position-absolute countdown_timer" data-countdown="2022/10/24">
+                  </div>
+                  <div class="question_title p-2 text-center w-100">
+                     <h1>State or Province</h1>
+                  </div>
+               </div>
+               <div class="row mt-5">
+                  <div class="left_side_img d-none d-md-block col-md-3">
+                     <!-- <img src="quiz/images/car.png" alt="image-not-found"> -->
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form_items overflow-hidden">
+                        <ul class="list-unstyled text-center p-0">
+                           <li>
+                              <label class="step_1 position-relative bg-white shadow animate__animated animate__fadeInRight animate_50ms active" for="opt_1">
+                                 <input type="text" id="opt_1" name="stp_1_select_option" value="" placeholder="State or Province
+                                 " >
+                                 
+                              </label>
+                           </li>
+                           <!-- <li>
+                              <label class="step_1 position-relative bg-white shadow animate__animated animate__fadeInRight animate_100ms" for="opt_2">Apple
+                                 <input type="radio" id="opt_2" name="stp_1_select_option" value="Apple">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_1 position-relative bg-white shadow animate__animated animate__fadeInRight animate_150ms" for="opt_3">Microsoft
+                                 <input type="radio" id="opt_3" name="stp_1_select_option" value="Microsoft">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_1 position-relative bg-white shadow animate__animated animate__fadeInRight animate_200ms" for="opt_4">IBM
+                                 <input type="radio" id="opt_4" name="stp_1_select_option" value="IBM">
+                              </label>
+                           </li> -->
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!------------------------- Step-2 ----------------------------->
+            <div class="multisteps_form_panel">
+               <div class="content_box shadow text-center bg-white d-flex py-5 position-relative">
+                  <div class="form_timer d-flex flex-column rounded-pill position-absolute countdown_timer" data-countdown="2022/10/24">
+                  </div>
+                  <div class="question_title p-2 text-center w-100">
+                     <h1>Age Range</h1>
+                  </div>
+               </div>
+               <div class="row mt-5">
+                  <div class="left_side_img d-none d-md-block col-md-3">
+                     <!-- <img src="quiz/images/car.png" alt="image-not-found"> -->
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form_items">
+                        <ul class="list-unstyled text-center p-0">
+                           <li>
+                              <label class="step_2 position-relative bg-white shadow animate__animated animate__fadeInRight animate_50ms" for="opt_5">
+                                 <!-- <input type="radio" id="opt_5" name="stp_2_select_option" value="Vatican City" checked> -->
+                                 <select id="opt_5" name="stp_2_select_option">
+                                    <option value="">Some high school, no diploma</option>
+                                    <option value="">Some college credit, no degree</option> 
+                                    <option value="">Associate degree</option>
+                                    <option value="">Bachelor’s degree</option>
+                                    <option value="">Master’s degree</option>
+                                    <option value="">Professional degree</option>
+                                    <option value="">Doctorate degree</option>
+                                 </select>
+                              </label>
+                           </li>
+                           <!-- <li>
+                              <label class="step_2 position-relative bg-white shadow animate__animated animate__fadeInRight animate_100ms" for="opt_6">Australia
+                                 <input type="radio" id="opt_6" name="stp_2_select_option" value="Australia">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_2 position-relative bg-white shadow animate__animated animate__fadeInRight animate_150ms" for="opt_7">New york City
+                                 <input type="radio" id="opt_7" name="stp_2_select_option" value="New york City">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_2 position-relative bg-white shadow animate__animated animate__fadeInRight animate_200ms" for="opt_8">Russia
+                                 <input type="radio" id="opt_8" name="stp_2_select_option" value="Russia">
+                              </label>
+                           </li> -->
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!------------------------- Step-3 ----------------------------->
+            <div class="multisteps_form_panel">
+               <div class="content_box shadow text-center bg-white d-flex py-5 position-relative">
+                  <div class="form_timer d-flex flex-column rounded-pill position-absolute countdown_timer" data-countdown="2022/10/24">
+                  </div>
+                  <div class="question_title p-2 text-center w-100">
+                     <h1>Pension provided </h1>
+                  </div>
+               </div>
+               <div class="row mt-5">
+                  <div class="left_side_img d-none d-md-block col-md-3">
+                     <!-- <img src="quiz/images/car.png" alt="image-not-found"> -->
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form_items">
+                        <ul class="list-unstyled text-center p-0">
+                           <li>
+                              <label class="check-box-icon step_3 position-relative bg-white shadow animate__animated animate__fadeInRight animate_50ms" for="opt_9">Yes
+                                 <input type="radio" class="check-box-yes" id="opt_9" name="stp_3_select_option" value="water vapours" checked>
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_3 position-relative bg-white shadow animate__animated animate__fadeInRight animate_100ms check-box-icon" for="opt_10">No
+                                 <input type="radio" class="check-box-yes" id="opt_10" name="stp_3_select_option" value="water vapours">
+                              </label>
+                           </li>
+                          
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!------------------------- Step-4 ----------------------------->
+            <div class="multisteps_form_panel">
+               <div class="content_box shadow text-center bg-white d-flex py-5 position-relative">
+                  <div class="form_timer d-flex flex-column rounded-pill position-absolute countdown_timer" data-countdown="2022/10/24">
+                  </div>
+                  <div class="question_title p-2 text-center w-100">
+                     <h1>Annual Base Salary (if hourly, please convert to annual)</h1>
+                  </div>
+               </div>
+               <div class="row mt-5 text-center">
+                  <div class="left_side_img d-none d-md-block col-md-3">
+                     <!-- <img src="quiz/images/car.png" alt="image-not-found"> -->
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form_items">
+                        <ul class="list-unstyled text-center p-0">
+                           <li>
+                              <label class="number-hide step_4 position-relative bg-white shadow animate__animated animate__fadeInRight animate_50ms" for="opt_13">
+                                 <input class="" type="number" id="opt_13" name="stp_4_select_option" value="" placeholder="Annual Base Salary (if hourly, please convert to annual)">
+                              </label>
+                           </li>
+                           <!-- <li>
+                              <label class="step_4 position-relative bg-white shadow animate__animated animate__fadeInRight animate_100ms" for="opt_14">Apple
+                                 <input type="radio" id="opt_14" name="stp_4_select_option" value="Apple">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_4 position-relative bg-white shadow animate__animated animate__fadeInRight animate_150ms" for="opt_15">Microsoft
+                                 <input type="radio" id="opt_15" name="stp_4_select_option" value="Microsoft">
+                              </label>
+                           </li>
+                           <li>
+                              <label class="step_4 position-relative bg-white shadow animate__animated animate__fadeInRight animate_200ms" for="opt_16">IBM
+                                 <input type="radio" id="opt_16" name="stp_4_select_option" value="IBM">
+                              </label>
+                           </li> -->
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
+         <!------------------------- Form button ----------------------------->
+         <div class="row pt-5 float-lg-end flex-column">
+            <button type="button" class="f_btn prev_btn bg-white border text-uppercase" id="prevBtn" onclick="nextPrev(-1)"><span><i class="fas fa-arrow-left"></i></span> Last Question</button>
+            <button type="button" class="f_btn next_btn text-white text-uppercase mt-2" id="nextBtn"
+            onclick="nextPrev(1)">Next</button>
+         </div>
+      </div>
+   </div>
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+          <p>© Copyright 2021 Servay Co. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/templatemo-custom.js"></script>
+
+  <script src="quiz/js/jquery-3.6.0.min.js"></script> 
+   <!-- Countdown-js include -->
+   <script src="quiz/js/countdown.js"></script>
+   <!-- Bootstrap-js include -->
+   <script src="quiz/js/bootstrap.min.js"></script>
+   <!-- jQuery-validate-js include -->
+   <script src="quiz/js/jquery.validate.min.js"></script>
+   <!-- Custom-js include -->
+   <script src="quiz/js/script.js"></script>
+
+
+</body>
+</html>
