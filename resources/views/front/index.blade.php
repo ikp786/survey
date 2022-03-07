@@ -61,8 +61,7 @@
               <ul class="started-steps">
                 <li> Create a new session ID below for your group.</li>
                 <li> Share the session ID with your group.</li>
-                <li> Fill in the questionnaire and we will email you the average salary
-                  Insights in an instant!.</li>
+                <li> Fill in the questionnaire and we will email you the average salary</li>
               </ul>
               <p class="lead fs-lg"><span class="web-tag-line">Insights in an instant!</span></p>
               <!-- <p class="lead fs-lg"><span>We email you the group’s average salary amount without asking your name!</span></p> -->
@@ -73,7 +72,7 @@
                 <fieldset>
                 <button class="survey-submit">Click to Start</button>
                 </fieldset>
-                <div class="alert alert-danger print-error-msg" style="display:none">
+                <div class="alert text-danger p-0 print-error-msg error-msg" style="display:none">
                   <ul></ul>
                 </div>
               </form>
@@ -168,11 +167,11 @@
       <div class="col-md-6 col-lg-4">
         <div class="box line">
           <div class="service-img">
-            <img src="{{asset('assets/front/images/5.png')}}">
+            <img class="w-75 mt-2 mb-2" src="{{asset('assets/front/images/fast.png')}}">
           </div>
 
-          <h4 class="title">
-            <a href="">Fast and Easy!</a>
+          <h4 class="title mt-4">
+            <a href="#">Fast and Easy!</a>
           </h4>
 
           <p class="description">
@@ -186,11 +185,11 @@
       <div class="col-md-6 col-lg-4">
         <div class="box line">
           <div class="service-img">
-            <img src="{{asset('assets/front/images/4.png')}}">
+            <img src="{{asset('assets/front/images/free.png')}}">
           </div>
 
           <h4 class="title">
-            <a href="">Free And Anonymous</a>
+            <a href="#">Free And Anonymous</a>
           </h4>
 
           <p class="description">
@@ -204,11 +203,11 @@
       <div class="col-md-6 col-lg-4">
         <div class="box ">
           <div class="service-img">
-            <img src="{{asset('assets/front/images/3.png')}}">
+            <img src="{{asset('assets/front/images/solution.png')}}">
           </div>
 
           <h4 class="title">
-            <a href="">An Elegant Solution</a>
+            <a href="#">An Elegant Solution</a>
           </h4>
 
           <p class="description">

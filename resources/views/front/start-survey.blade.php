@@ -36,7 +36,7 @@
                 @csrf
                 <fieldset>
                   <input type="email" name="email" class="email" placeholder="Enter Email..." autocomplete="on" required>
-                  <input type="hidden" value="{{$survey->unique_id}}" name="unique_id">
+                  <input type="hidden" value="{{$survey->unique_id}}" name="unique_id" class="error-msg">
                 </fieldset>
                 <fieldset>
                   <button class="main-button">Submit</button>
@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="right-image w-100 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
               <img src="{{asset('assets/front/images/bg_3.png')}}" alt="team meeting">
             </div>
           </div>

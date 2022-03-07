@@ -43,6 +43,7 @@ Route::controller(SurveyController::class)->group(function () {
     Route::get('create-survey/{id}', 'createServey')->name('front.create-survey');
     Route::get('start-survey/{id}', 'startServey')->name('front.start-survey');
     Route::post('quiz-start/{id}', 'quizStart')->name('front.quiz.start');
+    Route::post('save-quiz','saveQuiz')->name('front.save-quiz');
 });
 
 Route::controller(HomeController::class)->group(function () {

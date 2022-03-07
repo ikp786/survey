@@ -257,7 +257,7 @@ header
 }
 
 .header-area .main-nav .logo {
-  line-height: 90px;
+  line-height: 100px;
   color: #fff;
   font-size: 24px;
   font-weight: 700;
@@ -889,7 +889,7 @@ Banner Style
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 100px 0px 40px 0px;
+  padding: 40px 0px 40px 0px;
   position: relative;
   overflow: hidden;
 }
@@ -947,23 +947,15 @@ Banner Style
   color: #03a4ed;
   font-style: normal;
 }
-#demo {
+ul#demo {
   font-size: 14px !important;
   color: #23c686;
-  margin-right: 10px;
 }
-button.btn-link {
+p#demo button {
   font-size: 14px !important;
   background-color: #23c686;
   color: #fff;
   padding:5px 10px;
-}
-.end-date-input input{
-      border: 1px solid #23c686;
-    width: 100%;
-    border-radius: 5px;
-    color: #025a38;
-    padding: 8px 10px;
 }
 
 .main-banner .left-content h2 span {
@@ -1019,6 +1011,7 @@ button.btn-link {
   outline: none;
   border: none;
 }
+
 .main-banner .left-content form button {
   position: absolute;
   right: 10px;
@@ -1035,7 +1028,12 @@ button.btn-link {
   outline: none;
   border: none;
 }
-
+.end-date-input input{
+  border: 1px solid #f3f3f3;
+  width: 100%;
+  border-radius: 10px;
+  padding:4px 10px;
+}
 .main-banner .left-content form input {
   width: 100%;
   height: 66px;
@@ -1059,7 +1057,6 @@ button.btn-link {
   position: relative;
   padding: 0 6px;
   margin: 10px 0 0;
-  width: 100%;
 }
 
 .radio-item input[type='radio'] {
@@ -1307,7 +1304,7 @@ contact
 */
 
 .contact-us {
-  padding: 90px 0px;
+  padding: 160px 0px;
   /* background-image: url(../../assets/images/contact-bg.png); */
   background-repeat: no-repeat;
   background-position: center center;
@@ -1326,7 +1323,7 @@ contact
 }
 
 .phone-info {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .phone-info h4 {
@@ -1344,7 +1341,9 @@ contact
   background-color: #fff;
   border-radius: 50%;
   color: #23c686;
-  font-size: 22px; 
+  font-size: 22px;
+  margin-left: 30px;
+  margin-right: 15px;
 }
 
 .phone-info h4 span a {
@@ -1366,7 +1365,6 @@ form#contact .contact-dec img {
 form#contact {
   margin-left: 30px;
   position: relative;
-  box-shadow: 0 0 10px #00000021;
   background-color: #fff;
   padding: 60px 30px;
   border-radius: 20px;
@@ -1794,7 +1792,7 @@ font-family: 'Rubik',sans-serif !important;
 }
 
 #services {
-  padding: 60px 0 0 0;
+  padding: 60px 0 40px 0;
 }
 
 #services .box {
@@ -1802,7 +1800,7 @@ font-family: 'Rubik',sans-serif !important;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  margin: 0 10px ;
+  margin: 0 10px 40px 10px;
   background: transparent;
   /*box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);*/
   transition: all 0.3s ease-in-out;
@@ -2168,7 +2166,7 @@ ul.basic-list-detail {
         background: #30b0b3 ;
 }
 .service-img {
-    width: 20%;
+    width: 37%;
         margin: 0px auto 20px;
 }
 
@@ -2256,7 +2254,7 @@ img.shapes-4 {
     justify-content: center;
     margin: auto;
     text-align: center;
-    width: 55%;
+    height: 100%;
 }
 .shapes-up{
   position: relative;
@@ -2274,33 +2272,9 @@ img.shapes-4 {
     color: #2a2a2a !important;
     margin: 0px 0px 10px;
 }
- 
+.main-slider{
+  margin-top: -140px;
+}
 .w-20{
   width: 20%;
 }
-
-.error-msg ul li, .email-error-msg ul li {
-    font-size: 12px;
-    padding-left: 20px;
-    margin-top: 5px;
-}
-
-#neon {
-    display: flex;
-    margin-left: 4px;
-    margin-top: 0px !important;
-    align-items: center;
-}
-
-.vali-date{
-  margin-top: 15px; 
-    font-weight: 400;
-    color: #000000;
-    list-style: decimal;
-    margin-bottom: 10px; 
-    line-height: 27px;
-    font-family: 'Rubik',sans-serif !important;
-}
-
-
-

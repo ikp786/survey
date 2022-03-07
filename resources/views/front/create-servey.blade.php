@@ -51,7 +51,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 mb-2">
-                    <h5 style="margin-top: 15px;">Select Date</h5>
+                    <h5 class="vali-date">Valid Till</h5>
                   </div>
                   <div class="col-md-6 mb-2">
                     <div class="csmt-rdo">
@@ -70,7 +70,7 @@
                 <form id="search" action="#" method="GET">
                   <fieldset>
                     <input type="email" id="email" name="email" class="email" placeholder="Enter Email..." autocomplete="on" required>
-                    <div class="alert alert-danger email-error-msg" style="display:none">
+                    <div class="alert text-danger p-0 email-error-msg" style="display:none;transition: 0.5s;">
                       <ul></ul>
                     </div>
                   </fieldset>
@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="right-image w-100 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
               <img src="{{asset('assets/front/images/6.png')}}" alt="team meeting">
             </div>
           </div>
@@ -137,7 +137,7 @@
 
   function copy(selector) {
     var $temp = $("<div>");
-    alert('dsf')
+    // alert('dsf')
     $("body").append($temp);
     $temp.attr("contenteditable", true)
       .html($(selector).html()).select()
