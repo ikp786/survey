@@ -19,6 +19,19 @@ figure, header, nav, section, article, aside, footer, figcaption {
 
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+ /* Firefox  */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+
+
+
 /* clear fix */
 .grid:after {
   content: '';
@@ -1060,6 +1073,7 @@ button.btn-link {
   padding: 0 6px;
   margin: 10px 0 0;
   width: 100%;
+  text-align: left;
 }
 
 .radio-item input[type='radio'] {
@@ -1069,6 +1083,7 @@ button.btn-link {
 .radio-item label {
   color: #666;
   font-weight: normal;
+  position: relative;
 }
 
 .radio-item label:before {
@@ -1090,7 +1105,7 @@ button.btn-link {
   height: 12px;
   position: absolute;
   top: 9px;
-  left: 10px;
+  left: 4px;
   content: " ";
   display: block;
   background: #23c686;
@@ -1882,6 +1897,7 @@ ul.basic-list-detail {
 .basic-list-detail li {
   list-style: disc;
   margin: 10px 0;
+  text-align: left;
 }
 .basic-questions {
   padding-left: 15px;
@@ -1896,6 +1912,7 @@ ul.basic-list-detail {
       color: #23c686;
     margin-left: 10px !important;
     font-weight: 500 !important;
+    margin-top: -3px !important;
 }
 .parti-list h4{
     display: flex;

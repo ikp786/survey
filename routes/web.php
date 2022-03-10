@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
+Route::get('admin', function () {
     return view('admin.signin');
 });
 
@@ -41,13 +41,15 @@ Route::controller(SurveyController::class)->group(function () {
     Route::post('save-survey-uniqueId-by-creator', 'saveSurveyUniqueIdByCreator')->name('front.save-survey-uniqueId-by-creator');
     Route::post('save-survey-by-creator', 'saveSurveyByCreator')->name('front.save-survey-by-creator');
     Route::get('create-survey/{id}', 'createServey')->name('front.create-survey');
-    Route::get('start-survey/{id}', 'startServey')->name('front.start-survey');
+    Route::get('start-survey/{id?}', 'startServey')->name('front.start-survey');
     Route::post('quiz-start/{id}', 'quizStart')->name('front.quiz.start');
-    Route::post('save-quiz','saveQuiz')->name('front.save-quiz');
+    Route::post('save-quiz', 'saveQuiz')->name('front.save-quiz');
+    Route::get('results/{id}/{email}', 'results')->name('results');
 });
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('front', 'index')->name('index');
+    Route::get('/', 'index')->name('index');
+    Route::get('thanks', 'thanks')->name('front.thanks');
 });
 
 // ADMIN PANEL ROUTE

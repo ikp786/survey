@@ -3,6 +3,8 @@
 @include('front.inc.auth_message')
 @section('content')
 
+
+
 <div class="wrapper position-relative overflow-hidden">
    <!-- Top content -->
    <div class="container">
@@ -12,10 +14,19 @@
       </div>
       <div class="step_progress">
          <div class="d-flex overflow-hidden">
-            <div class="col-2">
-               <div class="step d-inline-block position-relative rounded-pill active">1</div>
+            @php $cnt = 1; @endphp
+            @foreach($questions as $key => $val)
+            @if($cnt == 1)
+            @php $active_class = 'active'; @endphp
+            @else
+            @php $active_class = ''; @endphp
+            @endif
+            <div class="col">
+               <div class="step d-inline-block position-relative rounded-pill  {{$active_class}}">{{$cnt}}</div>
             </div>
-            <div class="col-2 me-auto">
+            @php $cnt++; @endphp
+            @endforeach
+            <!-- <div class="col-2 me-auto">
                <div class="step d-inline-block position-relative rounded-pill">2</div>
             </div>
             <div class="col-2 text-end">
@@ -23,7 +34,7 @@
             </div>
             <div class="col-2 text-end">
                <div class="step d-inline-block position-relative rounded-pill">4</div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>
@@ -47,22 +58,22 @@
             <div class="row mt-5">
                <div class="left_side_img d-none d-md-block col-md-3">
                </div>
-               <input type="hidden" id="question{{$val->id}}" name="question[{{$val->id}}]" value="{{$val->id}}">
-               <input type="hidden" id="{{$val->options->type}}" name="question[{{$val->options->type}}]" value="{{$val->options->type}}">
+               <input type="hidden" id="question{{$val->id}}" name="question[]{{$val->id}}" value="{{$val->id}}">
+               <input type="hidden" id="{{$val->options->type}}" name="option_type[]{{$val->options->type}}" value="{{$val->options->type}}">
                <div class="col-md-6">
                   <div class="form_items overflow-hidden">
                      <ul class="list-unstyled text-center p-0">
                         <li>
                            <label class="step_1 position-relative bg-white shadow animate__animated animate__fadeInRight animate_50ms active" for="opt_1">
                               @if($val->options->type == 'number')
-                              <input type="number" id="answer_{{$val->id}}" name="answer[]" value="">
+                              <input type="number" placeholder="Enter numeric value" id="answer_{{$val->id}}" name="answer[{{$key}}]" value="">
                               @elseif($val->options->type == 'input')
-                              <input type="text" id="answer_{{$val->id}}" name="answer[]" value="">
+                              <input type="text" placeholder="Please fill this information" id="answer_{{$val->id}}" name="answer[{{$key}}]" value="">
                               @elseif($val->options->type == 'dropdown')
                               @php
                               $arr = json_decode($val->options->value,true);
                               @endphp
-                              <select name="answer[]" id="answer_{{$val->id}}">
+                              <select name="answer[{{$key}}]" id="answer_{{$val->id}}">
                                  @foreach($arr as $key2 => $val2)
                                  <option value="{{$val2}}">{{$val2}}</option>
                                  @endforeach
@@ -72,8 +83,7 @@
                               $arr = json_decode($val->options->value,true);
                               @endphp
                               @foreach($arr as $key2 => $val2)
-                              <input type="radio" name="answer[]" value="{{$val2}}" />
-                              {{$val2}}
+                             <span> <input type="radio" name="answer[{{$key}}]" value="{{$val2}}" /> {{$val2}}</span>
                               @endforeach
                               @endif
                            </label>
@@ -92,6 +102,9 @@
       </div>
    </div>
 </div>
+
+
+
 @endsection
 @section('script')
 <!-- Scripts -->

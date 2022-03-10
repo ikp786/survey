@@ -7,14 +7,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-6 align-self-center">
+          <div class="col-lg-7 align-self-center">
             <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
               <input type="hidden" id="unique_id" name="unique_id" value="{{$unique_id}}">
               <h6>You’ve Created the session: {{$unique_id}}</h6>
-              <h2>What set of questions should be included in your results?</h2>
+              <h2>Which questions should we ask?</h2>
               <div class="csmt-rdo">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="radio-item">
                       <input type="radio" checked="checked" name="question_type" id="question_type" value="basic">
                       <label for="question_type">Basic</label>
@@ -29,7 +29,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-8">
                     <div class="csmt-rdo">
                       <div class="radio-item">
                         <input type="radio" name="question_type" id="ritemb" value="advance">
@@ -38,9 +38,9 @@
                           <!-- <li>+ Basic Questions -->
                           <ul class="basic-questions">
                             @forelse($questions as $key => $val)
-                            @if($val->type == 'advance')
+                            
                             <li>{{$val->question}}</li>
-                            @endif
+                            
                             @empty
                             <li>No Question are availble yet.</li>
                             @endforelse
@@ -51,12 +51,12 @@
                     </div>
                   </div>
                   <div class="col-md-6 mb-2">
-                    <h5 class="vali-date">Valid Till</h5>
+                    <!-- <h5 class="vali-date">Valid Till</h5> -->
                   </div>
                   <div class="col-md-6 mb-2">
                     <div class="csmt-rdo">
                       <div class="radio-item end-date-input">
-                        <input type="date" name="end_date" id="end_date">
+                        <!-- <input type="date" name="end_date" id="end_date"> -->
                       </div>
                     </div>
                   </div>
@@ -81,7 +81,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <div class="right-image w-100 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
               <img src="{{asset('assets/front/images/6.png')}}" alt="team meeting">
             </div>

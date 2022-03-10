@@ -9,13 +9,13 @@
     <div class="row">
       <div class="col-md-12 wow fadeInBottom" data-wow-duration="1s" data-wow-delay="1s">
         <div class="left-content private-session m-0">
-          <p class="text-center mt-0">Did someone send you a private session ID? Enter it here</p>
-          <form id="search" action="#" method="GET" class="m-auto">
+          <p class="text-center mt-0">Did someone send you a private session ID?</p>
+          <form id="search" action="{{route('front.start-survey')}}" method="GET" class="m-auto">
             <fieldset>
-              <input type="address" name="address" class="email" placeholder="Enter Code..." autocomplete="on" required>
+              <input type="text" name="unique_ids" class="email" placeholder="Enter Code Here..." autocomplete="on" required>
             </fieldset>
             <fieldset>
-              <a href="#" class="main-button">Continue</a>
+              <button type="submit" class="main-button">Continue</button>
             </fieldset>
           </form>
         </div>
@@ -53,15 +53,12 @@
         <div class="row">
           <div class="col-lg-6 align-self-center">
             <div class="left-content main-slider how-works header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-
-
-
               <h4>Anonymous, Fast, and Free!</h4>
               <p class="lead fs-lg esey-stepes"><span>Getting started is easy</span></p>
               <ul class="started-steps">
                 <li> Create a new session ID below for your group.</li>
                 <li> Share the session ID with your group.</li>
-                <li> Fill in the questionnaire and we will email you the average salary</li>
+                <li> Fill in the questionnaire and we will email you the average salary.</li>
               </ul>
               <p class="lead fs-lg"><span class="web-tag-line">Insights in an instant!</span></p>
               <!-- <p class="lead fs-lg"><span>We email you the group’s average salary amount without asking your name!</span></p> -->
@@ -110,8 +107,8 @@
               <div class="user-profil">
                 <img class="rounded-circle" src="https://i.pinimg.com/originals/cd/30/70/cd3070a2136037debd9afc722a7a1fd6.jpg">
               </div>
-              <h5 class="name">Victoia Nova</h5>
-              <p class="title">Founder of Style Co.</p>
+              <h5 class="name">Victoria Nova</h5>
+              <p class="title">Actuary</p>
             </div>
           </div>
 
@@ -133,14 +130,14 @@
                 <img class="rounded-circle" src="https://sm.askmen.com/askmen_in/article/f/facebook-p/facebook-profile-picture-affects-chances-of-gettin_fr3n.jpg">
               </div>
               <h5 class="name">Mark Joseph</h5>
-              <p class="title">Founder of Style Co.</p>
+              <p class="title">Construction Lead </p>
             </div>
           </div>
 
         </div>
         <div class="col-md-6 col-lg-4 item">
           <div class="box">
-            <p class="description"><i class="fa fa-quote-left"></i> Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu. <i class="fa fa-quote-right"></i></p>
+            <p class="description"><i class="fa fa-quote-left"></i> You need to look at more than just salary. For me, I want to compare experience, credentials, exams, etc. If I want to negotiate salary, I need to look at the full breadth of benefits and compare apples to apples. There is no insight regarding salary for equivalent roles and I feel work relies on that <i class="fa fa-quote-right"></i></p>
             <!-- <div class="actuary-exp">
                         <p>Construction lead with 12 years of experience</p>
                       </div> -->
@@ -149,7 +146,7 @@
                 <img class="rounded-circle" src="https://i.imgur.com/o5uMfKo.jpg">
               </div>
               <h5 class="name">Carina Gill</h5>
-              <p class="title">Founder of Style Co.</p>
+              <p class="title">Analyst</p>
             </div>
           </div>
 

@@ -15,8 +15,8 @@ class SurveyController extends Controller
     public function saveSurveyUniqueIdByCreator(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'unique_id' => 'required|unique:surveys,unique_id,NULL,id,deleted_at,NULL'
-        ], ['unique_id.required' => "* The unique id field is required."]);
+            'unique_id'          => 'required|unique:surveys,unique_id,NULL,id,deleted_at,NULL'
+        ], ['unique_id.required' => "* The unique id field is requireds."]);
         if ($validator->passes()) {
             $id = Survey::create(['unique_id' => $request->unique_id, 'user_type' => 'creater']);
             return response()->json(['success' => 'Added new records.', 'survey_id' => $id->id]);
@@ -43,15 +43,18 @@ class SurveyController extends Controller
             'unique_id'         => 'required|exists:surveys,unique_id',
             'email'             => 'required|email|unique:surveys,email',
             'question_type'     => 'required|In:basic,advance',
-            'end_date'          => 'required|date|after_or_equal:today',
+            // 'end_date'          => 'required|date|after_or_equal:today',
             'number_of_attempt' => 'required|integer|digits_between:1,10'
         ], [
-            'unique_id.required' => "* The unique id field is required.",
-            'email.required' => "* The Email field is required."
+            'unique_id.required'            => "* The unique id field is required.",
+            'email.required'                => "* The Email field is required.",
+            'number_of_attempt.required'    => "number of participants should be a numerical value",
+            'email.email'                   => "please enter a valid email address"
         ]);
         if ($validator->passes()) {
-            $data           =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt');
-            $data['link']   =  asset('start-survey/' . $request->unique_id);
+            $data               =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt');
+            $data['link']       =  asset('start-survey/' . $request->unique_id);
+            $data['ip_address'] =  $this->get_client_ip();
             $survey = Survey::where('unique_id', $request->unique_id)->update($data);
             return response()->json(['success' => 'Survey created success.', 'data' => $data['link']]);
         }
@@ -78,20 +81,28 @@ class SurveyController extends Controller
         return $ipaddress;
     }
 
-    public function startServey($unique_id = '')
+    public function startServey(Request $request, $unique_id = '')
     {
+        if ($request->unique_id) {
+            $unique_id = $request->unique_ids;
+        }
         $ip = $this->get_client_ip();
-        $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id])->count();
-
+        $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id, 'user_type' => 'taker'])->count();
+        $chekSurveyComplete = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
         $survey = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
         if (empty($survey)) {
-            return redirect()->route('index')->with('Failed', 'Sorry! Survey not found.');
+            return redirect()->route('index')->with('Failed', 'Session Id not found');
         } elseif ($chekExist > 0) {
-            return redirect()->route('index')->with('Failed', 'Sorry! this servey has been  already taken.');
+            return redirect()->route('index')->with('Failed', 'Sorry! this survey has been  already taken.');
+        } elseif ($chekSurveyComplete->is_complete == 1) {
+            return redirect()->route('index')->with('Failed', 'Sorry! this survey has been  closed.');
+        }
+        if ($survey->question_type == 'basic') {
+            $questions      = Question::where('type', $survey->question_type)->get();
+        } else {
+            $questions      = Question::get();
         }
 
-
-        $questions      = Question::where('type', $survey->question_type)->get();
         $title          = 'Start Survey';
         $data           = compact('title', 'questions', 'survey');
         return view('front.start-survey', $data);
@@ -104,17 +115,18 @@ class SurveyController extends Controller
             'unique_id'   => 'required|exists:surveys,unique_id',
         ]);
         $survery        = Survey::where('unique_id', $request->unique_id)->first();
-        $questions      = Question::with('options')->where('type', 'basic')->get();
+        $questions      = Question::with('options')->where('type', 'advance')->get();
 
         $ip = $this->get_client_ip();
 
         $survey_taker_id     = Survey::create(
             [
-                'email'       => $request->email,
-                'ip_address'  => $ip,
-                'unique_id'   => $request->unique_id,
-                'user_type'   => 'taker',
-                'survey_id'   => $survery->id
+                'email'          => $request->email,
+                'ip_address'     => $ip,
+                'unique_id'      => $request->unique_id,
+                'user_type'      => 'taker',
+                'survey_id'      => $survery->id,
+                'question_type'  => $survery->question_type
             ]
         )->id;
         $title          = 'Start Quiz';
@@ -123,33 +135,89 @@ class SurveyController extends Controller
         return view('front.quiz', $data);
     }
 
-    public function saveOptionQuiz(Request $request)
-    {
-        if ($request->ajax()) {
+    // public function saveOptionQuiz(Request $request)
+    // {
+    //     if ($request->ajax()) {
 
-            $survery  = Survey::where('id',$request->survey_creater_id)->first();
-            $option   = Option::where('id',$request->question_id)->first();
+    //         $survery  = Survey::where('id', $request->survey_creater_id)->first();
+    //         $option   = Option::where('id', $request->question_id)->first();
 
-            $result                        =  new Result();
-            $result->survey_creater_id     =  $request->survey_creater_id;
-            $result->survey_taker_id       =  $request->survey_taker_id;
-            $result->question_id           =  $request->question_id;
-            $result->option_id             =  $request->option_id;
-            $result->question_type         =  $survery->question_type;
-            $result->option_type           =  $option->type;
-            $result->option_value          =  $request->option_value;
-            $result->save();
+    //         $result                        =  new Result();
+    //         $result->survey_creater_id     =  $request->survey_creater_id;
+    //         $result->survey_taker_id       =  $request->survey_taker_id;
+    //         $result->question_id           =  $request->question_id;
+    //         $result->option_id             =  $request->option_id;
+    //         $result->question_type         =  $survery->question_type;
+    //         $result->option_type           =  $option->type;
+    //         $result->option_value          =  $request->option_value;
+    //         $result->save();
 
-            return response()->json(['success' => 'Survey save success.']);
-        }
-    }
+    //         return response()->json(['success' => 'Survey save success.']);
+    //     }
+    // }
 
     public function saveQuiz(Request $request)
     {
-        return $request->all;
-        $update   = Survey::find($request->survey_taker_id)->update([
-            'is_compelte'   => 1
-        ]);
-        return redirect()->route('index')->with('Success', 'Survey complete.');
+        $survery  = Survey::find($request->survey_creater_id);
+        $ip = $this->get_client_ip();
+        $survery_taker_update = Survey::find($request->survey_taker_id)->update(['ip_address' => $ip, 'is_complete' => 1]);
+        foreach ($request->question as $key => $value) {
+            $option   = Option::where('question_id', $value)->first();
+            $result                        =  new Result();
+            $result->survey_creater_id     =  $request->survey_creater_id;
+            // $result->survey_id             =  $request->survey_creater_id;
+            $result->survey_taker_id       =  $request->survey_taker_id;
+            $result->question_id           =  $value;
+            $result->option_id             =  $option->id;
+            $result->question_type         =  $option->question_type;
+            $result->option_type           =  $option->type;
+            // $result->is_complete              =  1;
+            $result->option_value          =  isset($request->answer[$key]) ? $request->answer[$key] : '';
+            $result->save();
+        }
+
+        $survery_taker = Survey::where('survey_id', $survery->id)->where('is_complete', 1)->get();
+        if (count($survery_taker) >= $survery->number_of_attempt) {
+            foreach ($survery_taker as $key => $value) {
+                $this->results($survery->id, $value->email);
+                $value->is_email_sent = 1;
+                $value->save();
+            }
+            $survery->is_email_sent = 1;
+            $survery->is_complete = 1;
+            $survery->save();
+            $this->results($survery->id, $survery->email);
+            // die;
+        }
+        return redirect()->route('front.thanks')->with('Success', 'Survey complete.');
+    }
+
+    public function results($id, $email)
+    {
+        $surverys    =  Survey::find($id);
+        if ($surverys->question_type == 'basic') {
+            $questions   =  Question::with('options')->where(['type' => $surverys->question_type])->get();
+        } else {
+            $questions   =  Question::with('options')->get();
+        }
+        $results     =  [];
+        foreach ($questions as $key => $value) {
+            if ($value->options->type == 'dropdown' || $value->options->type == 'radio') {
+                $results[$value->id]['question'] = $value->question;
+                $options  = json_decode($value->options->value, true);
+
+                $new = [];
+                foreach ($options as $key2 => $value2) {
+                    $result  = Result::where(['question_id' => $value->id, 'option_id' => $value->options->id, 'option_value' => $value2, 'survey_creater_id' => $surverys->id])->count();
+                    $abc = array('count' => $result, 'value' => $value2);
+                    $results[$value->id][$value->options->id][] = $abc;
+                }
+            }
+        }
+        if (!empty($results)) {
+            \Mail::to($email)->send(new \App\Mail\SurveyTakerMail($results));
+            // \Mail::to('gaganjploft@gmail.com')->send(new \App\Mail\SurveyTakerMail($results));
+        }
+        // return view('front.email',compact('results'));
     }
 }

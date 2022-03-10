@@ -18,6 +18,7 @@ class Result extends Model
         'option_id',
         'question_type',
         'option_type',
-        'option_value'
+        'option_value',
+        'is_complete'
     ];
 }

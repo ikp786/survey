@@ -30,7 +30,7 @@ $(function(){
       var $this = $(this), finalDate = $(this).data('countdown');
       $this.countdown(finalDate, function(event) {
         var $this = $(this).html(event.strftime(''
-        + '<img src="quiz/images/clock.png" alt="image-not-found">'
+        + '<img src="https://stageofproject.com/survey-portal/quiz/images/clock.png" alt="image-not-found">'
         + '<span class="text-white">%M:%S</span>'));
       });
     });
@@ -42,8 +42,8 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
-  console.log('showTab');
-  console.log(n)
+  // console.log('showTab');
+  // console.log(n)
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("multisteps_form_panel");
   x[n].style.display = "block";
@@ -55,6 +55,7 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").setAttribute("type", "submit");
   } else {
     document.getElementById("nextBtn").innerHTML = "Next Question" + ' <span><i class="fas fa-arrow-right"></i></span>';
   }
@@ -63,8 +64,8 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-  console.log('nextPrev');
-  console.log(currentTab);
+  // console.log('nextPrev');
+  // console.log(currentTab);
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("multisteps_form_panel");
   // Exit the function if any field in the current tab is invalid:
@@ -100,17 +101,15 @@ function validateForm() {
   }
   // var isFinish = document.getElementsByClassName('finish');
   // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    console.log('finish');
-    console.log(currentTab);
-    console.log(document.getElementsByClassName("step"));
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
+  // if (valid) {
+  //   document.getElementsByClassName("step")[currentTab].className += " finish";
+  // }
   return valid; // return the valid status
 }
 
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
+  console.log(document.getElementsByClassName("step"));
   var i, x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");

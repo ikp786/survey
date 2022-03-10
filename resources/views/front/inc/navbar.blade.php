@@ -13,8 +13,8 @@
               <li class="scroll-to-section"><a href="{{route('index')}}" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#">How it works</a></li>
               <li class="scroll-to-section"><a href="#">Who we are</a></li>
-              <li class="scroll-to-section"><a href="#">Term and Condition</a></li>
-              <li class="scroll-to-section"><div class="main-red-button"><a href="#">Contact Now</a></div></li> 
+              <li class="scroll-to-section"><a href="#">Terms and Conditions</a></li>
+              <li class="scroll-to-section"><div class="main-red-button"><a href="#">Contact Us</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>

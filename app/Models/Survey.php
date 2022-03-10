@@ -16,6 +16,9 @@ class Survey extends Model
         'email',
         'user_type',
         'question_type',
-        'end_date'
+        'end_date',
+        'is_complete',
+        'survey_id',
+        'ip_address'
     ];
 }

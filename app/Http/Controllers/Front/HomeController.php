@@ -13,4 +13,11 @@ class HomeController extends Controller
         $data  = compact('title');
         return view('front.index',$data);
     }
+
+    public function thanks()
+    {
+        $title   ='Thanks you';
+        $data    = compact('title');
+        return view('front.thanks',$data);
+    }
 }
