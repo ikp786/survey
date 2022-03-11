@@ -7,14 +7,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-7 align-self-center">
-            <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+          <div class="col-lg-12 col-md-12 align-self-center ">
+            <div class="left-content create-survey-slider header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
               <input type="hidden" id="unique_id" name="unique_id" value="{{$unique_id}}">
               <h6>You’ve Created the session: {{$unique_id}}</h6>
               <h2>Which questions should we ask?</h2>
               <div class="csmt-rdo">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-5">
                     <div class="radio-item">
                       <input type="radio" checked="checked" name="question_type" id="question_type" value="basic">
                       <label for="question_type">Basic</label>
@@ -29,8 +29,8 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-8">
-                    <div class="csmt-rdo">
+                  <div class="col-md-7">
+                    <div class="csmt-rdo ">
                       <div class="radio-item">
                         <input type="radio" name="question_type" id="ritemb" value="advance">
                         <label for="ritemb">Advance</label>
@@ -38,9 +38,9 @@
                           <!-- <li>+ Basic Questions -->
                           <ul class="basic-questions">
                             @forelse($questions as $key => $val)
-                            
+
                             <li>{{$val->question}}</li>
-                            
+
                             @empty
                             <li>No Question are availble yet.</li>
                             @endforelse
@@ -63,10 +63,11 @@
                 </div>
               </div>
               <div class="parti-list">
-                <h4>How many people will be participating? <input type="text" name="number_of_attempt" id="number_of_attempt"></h4>
+                <h4>How many people will be participating? <input type="number" name="number_of_attempt" id="number_of_attempt"></h4>
+                <div class="alert text-danger p-0 number-error-msg m-0" style="display:none;transition: 0.5s;"></div>
                 <p>We will email the results after 24 hours if at least 3 people answer the questions</p>
               </div>
-              <div id="copy_link">
+              <div id="copy_link" class="create-survay-input">
                 <form id="search" action="#" method="GET">
                   <fieldset>
                     <input type="email" id="email" name="email" class="email" placeholder="Enter Email..." autocomplete="on" required>
@@ -81,11 +82,11 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5">
+          <!--  <div class="col-lg-5">
             <div class="right-image w-100 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
               <img src="{{asset('assets/front/images/6.png')}}" alt="team meeting">
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -119,7 +120,12 @@
             var content = '<p ><u id="demo">' + data.data + '</u><button class="btn btn-link" onclick="copy(\'#demo\')">Copy </button></p>';
             $('#copy_link').html(content);
           } else {
-            printErrorMsg(data.error);
+            if (data.error == "* number of participants should be a numerical value") {
+              $(".number-error-msg").html(data.error);
+              $(".number-error-msg").css('display', 'block');
+            } else {
+              printErrorMsg(data.error);
+            }
           }
         }
       });

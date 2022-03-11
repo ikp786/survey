@@ -48,7 +48,7 @@ class SurveyController extends Controller
         ], [
             'unique_id.required'            => "* The unique id field is required.",
             'email.required'                => "* The Email field is required.",
-            'number_of_attempt.required'    => "number of participants should be a numerical value",
+            'number_of_attempt.required'    => "* number of participants should be a numerical value",
             'email.email'                   => "please enter a valid email address"
         ]);
         if ($validator->passes()) {
@@ -83,9 +83,10 @@ class SurveyController extends Controller
 
     public function startServey(Request $request, $unique_id = '')
     {
-        if ($request->unique_id) {
+        if ($request->unique_ids) {
             $unique_id = $request->unique_ids;
         }
+
         $ip = $this->get_client_ip();
         $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id, 'user_type' => 'taker'])->count();
         $chekSurveyComplete = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
@@ -115,7 +116,11 @@ class SurveyController extends Controller
             'unique_id'   => 'required|exists:surveys,unique_id',
         ]);
         $survery        = Survey::where('unique_id', $request->unique_id)->first();
-        $questions      = Question::with('options')->where('type', 'advance')->get();
+        if ($survery->question_type == 'basic') {
+            $questions      = Question::with('options')->where('type', 'basic')->get();
+        } else {
+            $questions      = Question::with('options')->get();
+        }
 
         $ip = $this->get_client_ip();
 
@@ -186,8 +191,7 @@ class SurveyController extends Controller
             $survery->is_email_sent = 1;
             $survery->is_complete = 1;
             $survery->save();
-            $this->results($survery->id, $survery->email);
-            // die;
+            $this->surveyCreaterResult($survery->id, $survery->email);
         }
         return redirect()->route('front.thanks')->with('Success', 'Survey complete.');
     }
@@ -216,8 +220,45 @@ class SurveyController extends Controller
         }
         if (!empty($results)) {
             \Mail::to($email)->send(new \App\Mail\SurveyTakerMail($results));
-            // \Mail::to('gaganjploft@gmail.com')->send(new \App\Mail\SurveyTakerMail($results));
         }
-        // return view('front.email',compact('results'));
+    }
+
+
+    public function surveyCreaterResult($id, $email = null)
+    {
+        $email       =  isset($email) ? $email : 'khanebrahim643@gmail.com';
+        $surverys    =  Survey::find($id);
+        if ($surverys->question_type == 'basic') {
+            $questions   =  Question::with('options')->where(['type' => $surverys->question_type])->get();
+        } else {
+            $questions   =  Question::with('options')->get();
+        }
+        $results        =  [];
+        $input_result   =  [];
+        foreach ($questions as $key => $value) {
+            if ($value->options->type == 'dropdown' || $value->options->type == 'radio') {
+                $results[$value->id]['question'] = $value->question;
+                $options  = json_decode($value->options->value, true);
+
+                $new = [];
+                foreach ($options as $key2 => $value2) {
+                    $result  = Result::where(['question_id' => $value->id, 'option_id' => $value->options->id, 'option_value' => $value2, 'survey_creater_id' => $surverys->id])->count();
+                    $abc = array('count' => $result, 'value' => $value2);
+                    $results[$value->id][$value->options->id][] = $abc;
+                }
+            } else {
+
+                $result  = Result::where(['question_id' => $value->id, 'survey_creater_id' => $surverys->id])->pluck('option_value');
+
+                $input_result[$value->id]['question'] = $value->question;
+                $input_result[$value->id]['ans']      = $result;
+            }
+        }
+        if (!empty($results) && !empty($input_result)) {
+
+            $data = ['results' => $results, 'input_result' => $input_result];
+            \Mail::to($email)->send(new \App\Mail\SurveyCreaterMail($data));
+        }
+        // return view('email.surevy_creator_email', compact('data'));
     }
 }

@@ -716,9 +716,14 @@ header
     margin-top: 40px !important;
   }
 }
+
+
 @media screen and (max-width: 575px) {
   .how-it-works-section .section-heading {
     font-size: 34px !important;
+}
+.basic-questions li {
+    width: 100% !important;
 }
 .how-it-works-section {
     margin-top: 0px !important;
@@ -987,6 +992,7 @@ button.btn-link {
     font-weight: 600;
     margin: 10px 0;
     font-size: 18px;
+    margin: 0;
 }
 
 .esey-stepes span{
@@ -1082,8 +1088,9 @@ button.btn-link {
 
 .radio-item label {
   color: #666;
-  font-weight: normal;
-  position: relative;
+      font-weight: 600;
+    position: relative;
+    margin-bottom: 15px;
 }
 
 .radio-item label:before {
@@ -1890,9 +1897,13 @@ font-family: 'Rubik',sans-serif !important;
   color: #000 !important;
 }
 ul.basic-list-detail {
-  padding-left: 35px;
-  display: inline-block;
-  width: 100%;
+      padding-left: 35px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    background: #edfdf7;
+    padding: 10px 30px;
+    height: 100%;
 }
 .basic-list-detail li {
   list-style: disc;
@@ -1903,10 +1914,17 @@ ul.basic-list-detail {
   padding-left: 15px;
 }
 .basic-questions li{
-  list-style: circle;
+       float: left;
+    width: 43%;
+    margin: 3px 0px 0px 15px;
 }
 .parti-list {
-  margin-top: 10px;
+    margin-top: 10px;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
 }
 .total-ser{
       color: #23c686;
@@ -1915,15 +1933,15 @@ ul.basic-list-detail {
     margin-top: -3px !important;
 }
 .parti-list h4{
-    display: flex;
     font-size: 20px;
     font-weight: 700;
 }
 .parti-list h4 input{
-  width: 120px;
-  border-bottom: 2px solid #000 !important;
-  border: none;
-  margin-left: 5px;
+      width: 120px;
+    border: 2px solid #23c686 !important;
+    border-radius: 5px;
+    margin-left: 0px;
+    padding: 4px 10px;
 }
 /*.parti-list  p{
   color: #000 !important;
@@ -2319,5 +2337,15 @@ img.shapes-4 {
     font-family: 'Rubik',sans-serif !important;
 }
 
+.create-survey-slider{
+  text-align: center !important;
+}
 
 
+.create-survay-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}

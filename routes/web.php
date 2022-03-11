@@ -20,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
+Route::fallback(function () {
+    return response()->json([
+        'ResponseCode'  => 404,
+        'status'        => False,
+        'message'       => 'URL not found as you looking'
+    ]);
+});
 Route::get('admin', function () {
     return view('admin.signin');
 });
@@ -45,11 +48,18 @@ Route::controller(SurveyController::class)->group(function () {
     Route::post('quiz-start/{id}', 'quizStart')->name('front.quiz.start');
     Route::post('save-quiz', 'saveQuiz')->name('front.save-quiz');
     Route::get('results/{id}/{email}', 'results')->name('results');
+    Route::get('survey-creater-result/{id}', 'surveyCreaterResult')->name('survey-creater-result');
 });
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('thanks', 'thanks')->name('front.thanks');
+
+    Route::get('term-condition', 'termCondition')->name('front.term-condition');
+    Route::get('contact-us', 'contactus')->name('front.contact-us');
+    Route::get('how-works', 'howWorks')->name('front.how-works');
+    Route::get('who-we-are', 'whoWeAre')->name('front.who-we-are');
+    Route::post('contact-us/store','storeContactUs')->name('front.contact-us.store');
 });
 
 // ADMIN PANEL ROUTE
@@ -105,6 +115,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('dashboard', 'index')->name('admin.dashboard');
             Route::get('logout', 'logout')->name('admin.logout');
+            Route::get('survey-list','surveyList')->name('admin.surveys.list');
+            Route::get('survey/result/{id}', 'surveyResult')->name('admin.survey.result');
+
         });
         /*
 |--------------------------------------------------------------------------

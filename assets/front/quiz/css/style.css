@@ -76,8 +76,8 @@ Author      : jthemes (https://themeforest.net/user/jthemes)
 
 .content_box {
   width: 50%;
-  height: 15rem;
-  margin: 8rem auto 2rem;
+  /*height: 15rem*/;
+  margin: 1.5rem auto 2rem;
   border-radius: 0.625rem;
   z-index: 9999;
 }
@@ -106,23 +106,32 @@ Author      : jthemes (https://themeforest.net/user/jthemes)
 }
 
 .question_title h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   padding: 1rem;
   margin-top: 30px;
 }
-.list-unstyled{
-  margin-top: 100px;
+.quiz-section{
+  margin-top: 200px;
 }
 .form_items label {
   width: 100%;
   font-size: 1.435625rem;
   font-weight: 500;
-  
   border: 3px solid #e1e1e1;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   cursor: pointer;
   border-radius: 0.625rem;
+}
+.form_items span {
+  width: 100%;
+  font-size: 1.435625rem;
+  font-weight: 500;
+  border: 3px solid #e1e1e1;
+  cursor: pointer;
+  border-radius: 0.625rem;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 .check-box-icon{
 padding: 1rem;
@@ -141,23 +150,23 @@ padding: 1rem;
   font-weight: 900;
   display: none;
 }
-.form_items label.active {
+.form_items span.active {
   border: 3px solid #33b236;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-.form_items label.active:before {
+.form_items span.active:before {
   display: block;
 }
 .check-box-yes{
   display: none !important;
 }
-.form_items label.active {
+.form_items span.active {
   border: 3px solid #33b236;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-.form_items label.active:before {
+.form_items span.active:before {
   display: block;
 }
 /* .form_items input, .form_items select {
@@ -172,6 +181,13 @@ padding: 1rem;
   cursor: auto;
   padding: 1rem;
   border-radius: 10px;
+}
+.form_items span input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* visibility: hidden; */
+    opacity: 0;
 }
 .f_btn {
   color: #000000;
@@ -194,10 +210,15 @@ padding: 1rem;
 }
 
 .next_btn {
-  margin-bottom: 2rem;
   /* background: -webkit-gradient(linear, left top, right top, from(#fe6400), to(#ffae15));
   background: linear-gradient(to right, #fe6400, #ffae15); */
+
+  margin-bottom: 2rem;
   background-color: #23c686;
+  padding: 15px 20px;
+}
+.last-question{
+  padding: 15px 20px !important;
 }
 .next_btn .fa-arrow-right:before{
   content: '❯';
@@ -289,10 +310,10 @@ button {
   }
 }
 /* ==================================================
-*	01 - media screen and (max-width: 991px)
-*	02 - media screen and (max-width: 767px)
-*	03 - media screen and (max-width: 575px)
-*	04 - media screen and (max-width: 380px)
+* 01 - media screen and (max-width: 991px)
+* 02 - media screen and (max-width: 767px)
+* 03 - media screen and (max-width: 575px)
+* 04 - media screen and (max-width: 380px)
 *   XX-Large devices (larger desktops)
 *   No media query since the xxl breakpoint has no upper bound on its width
 ================================================== */
