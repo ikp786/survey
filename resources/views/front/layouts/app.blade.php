@@ -97,6 +97,11 @@
         .main-heading {
             display: flex;
         }
+
+        .error {
+            color: red;
+            background-color: #acf;
+        }
     </style>
 </head>
 

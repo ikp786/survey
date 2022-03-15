@@ -37,45 +37,6 @@
                         <ul class="basic-list-detail">
                           <!-- <li>+ Basic Questions -->
                           <ul class="basic-questions">
-                            <div class="row">
-
-                              <div class="col-md-6">
-                                <li>(Includes Basic Questions)</li>
-                                @php $cnt = 1; @endphp
-                                @forelse($questions as $key => $val)
-
-                                @if($val->type != 'basic')
-                                @php $cnt++; @endphp
-                                @if($cnt <= 5) <li>{{$val->question}}</li>
-
-                                  @endif
-                                  @endif
-                                  @endforeach
-
-                              </div>
-
-                              <div class="col-md-6">
-                                @php $cnt = 1; @endphp
-                                @forelse($questions as $key => $val)
-
-                                @if($val->type != 'basic')
-
-                                @if($cnt >= 5)
-
-                                <li>{{$val->question}}</li>
-
-                                @endif
-                                @php $cnt++; @endphp
-                                @endif
-                                @endforeach
-                              </div>
-
-                            </div>
-                          </ul>
-                        </ul>
-                        <!-- <ul class="basic-list-detail">
-                        
-                          <ul class="basic-questions">
                             <li>(Includes Basic Questions)</li>
                             @forelse($questions as $key => $val)
 
@@ -87,8 +48,8 @@
                             <li>No Question are availble yet.</li>
                             @endforelse
                           </ul>
-                        
-                        </ul> -->
+                          <!-- </li> -->
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -118,11 +79,10 @@
                     </div>
                   </fieldset>
                   <fieldset>
-                    <button class="survey-submit countdown">Submit</button>
+                    <button class="survey-submit">Submit</button>
                   </fieldset>
                 </form>
               </div>
-              <div id="redirect-survey-message" class="create-survay-input"></div>
             </div>
           </div>
           <!--  <div class="col-lg-5">
@@ -130,14 +90,6 @@
               <img src="{{asset('assets/front/images/6.png')}}" alt="team meeting">
             </div>
           </div> -->
-
-
-          <form id="start-survey-submit" action="{{route('front.quiz.start.self')}}" method="post">
-            <input type="hidden" id="email_address" name="email" class="email" placeholder="Enter Email..." autocomplete="on" required>
-            <input type="hidden" id="unique_id" name="unique_id" value="{{$unique_id}}">
-          </form>
-
-
         </div>
       </div>
     </div>
@@ -152,7 +104,6 @@
       var _token = $("input[name='_token']").val();
       var question_type = $("input[type='radio'][name='question_type']:checked").val();
       var email = $('#email').val();
-      $('#email_address').val(email);
       var unique_id = $("input[name='unique_id']").val();
       var end_date = $("input[name='end_date']").val();
       var number_of_attempt = $('#number_of_attempt').val();
@@ -171,28 +122,6 @@
           if ($.isEmptyObject(data.error)) {
             var content = '<p ><u id="demo">' + data.data + '</u><button class="btn btn-link" onclick="copy(\'#demo\')">Copy </button></p>';
             $('#copy_link').html(content);
-            // $('#redirect-survey-message').html('Redirect To survey page after 5 sec');
-            $('#redirect-survey-message').css('color', 'red');
-            // setTimeout(function() {
-            //   window.location.href = data.data;
-            // }, 2000);
-
-
-            // var count = 5;
-            // var countdown = setInterval(function() {
-            //   $("#redirect-survey-message").html(" We are redirecting you to the survey page in next " + count + " sec... ");
-            //   if (count == 0) {
-            //     clearInterval(countdown);
-                document.getElementById("start-survey-submit").submit();
-
-                // window.open(window.location.href = data.data);
-
-            //   }
-            //   count--;
-            // }, 1000);
-
-
-
           } else {
             if (data.error == "* number of participants should be a numerical value") {
               $(".number-error-msg").html(data.error);
@@ -228,18 +157,5 @@
     document.execCommand("copy");
     $temp.remove();
   }
-
-
-
-  // var count = 5;
-  // var countdown = setInterval(function(){
-  //   $(".countdown").html(count + " seconds remaining!");
-  //   if (count == 0) {
-  //     clearInterval(countdown);
-  //     window.open('http://google.com', "_self");
-
-  //   }
-  //   count--;
-  // }, 5000);
 </script>
 @endsection

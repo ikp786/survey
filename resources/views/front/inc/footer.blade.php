@@ -4,19 +4,19 @@
       <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
         <ul class="social-icon">
           <li>
-            <a href="#"><i class="fa fa-facebook"></i></a>
+            <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
           </li>
           <li>
             <a href="https://twitter.com/hashtag/wageshare?src=hash"><i class="fa fa-twitter"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <!-- <a href="#"><i class="fa fa-instagram"></i></a> -->
           </li>
           <li>
-            <a href="#"><i class="fa fa-facebook"></i></a>
+            <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
           </li>
         </ul>
-        <p>© Copyright 2021 Survay Co. All Rights Reserved.</p>
+        <!-- <p>© Copyright 2021 Survay Co. All Rights Reserved.</p> -->
       </div>
     </div>
   </div>

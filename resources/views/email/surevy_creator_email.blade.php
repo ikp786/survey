@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,9 +41,11 @@
             color: #fff;
             text-decoration: none;
         }
+
         @media only screen and (max-width: 620px) {}
     </style>
 </head>
+
 <body style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
     <div class="container">
         <div class="logo">
@@ -80,13 +83,14 @@
 
 
 
-<!-- SURVEY INPUT TEXT INPUT NUMBER RESULT -->
+        <!-- SURVEY INPUT TEXT INPUT NUMBER RESULT -->
 
         @foreach($data['input_result'] as $key => $val)
         <div class="ques-heading" style="padding: 10px 20px;">
-            <h3>{{$val['question']}}</h3>           
+            <h3>{{$val['question']}}</h3>
+            @if($val['option_type'] == 'text')
             @foreach($val['ans'] as $key2 => $val2)
-            
+
             <div class="ques-option" style="margin-bottom: 20px;">
                 <!-- <h4 style="margin: 0 0 10px;">{{--$val2--}} <span style="float: right;">{{--$val2--}}%</span></h4> -->
                 <!-- <div class="progress-bar" style="position: relative; width: 100%; height: 10px; background-color: #c2c2c2; border-radius: 50px;">
@@ -97,8 +101,18 @@
                 <span>{{$val2}}</span>
             </div>
             @endforeach
+            @else
+            @php $number_count = 0; @endphp
+            @foreach($val['ans'] as $key3 => $val3)
+            @php $number_count = $number_count+$val3; @endphp
+            @endforeach
+            <div class="ques-option" style="margin-bottom: 20px;">
+                <span>{{ round($number_count/count($val['ans']),2) }}</span>
+            </div>
+            @endif
         </div>
         @endforeach
     </div>
 </body>
+
 </html>

@@ -46,6 +46,7 @@ Route::controller(SurveyController::class)->group(function () {
     Route::get('create-survey/{id}', 'createServey')->name('front.create-survey');
     Route::get('start-survey/{id?}', 'startServey')->name('front.start-survey');
     Route::post('quiz-start/{id}', 'quizStart')->name('front.quiz.start');
+    Route::post('quiz-start-self', 'quizStartSelf')->name('front.quiz.start.self');
     Route::post('save-quiz', 'saveQuiz')->name('front.save-quiz');
     Route::get('results/{id}/{email}', 'results')->name('results');
     Route::get('survey-creater-result/{id}', 'surveyCreaterResult')->name('survey-creater-result');
@@ -114,6 +115,7 @@ Route::group(['prefix' => 'admin'], function () {
 */
         Route::controller(DashboardController::class)->group(function () {
             Route::get('dashboard', 'index')->name('admin.dashboard');
+            Route::get('contact-us', 'contactUsIndex')->name('admin.contact-us');
             Route::get('logout', 'logout')->name('admin.logout');
             Route::get('survey-list','surveyList')->name('admin.surveys.list');
             Route::get('survey/result/{id}', 'surveyResult')->name('admin.survey.result');

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\returnSelf;
 
 class DashboardController extends Controller
 {
@@ -58,13 +61,22 @@ class DashboardController extends Controller
 
                 $result  = Result::where(['question_id' => $value->id, 'survey_creater_id' => $surverys->id])->pluck('option_value');
 
-                $input_result[$value->id]['question'] = $value->question;
-                $input_result[$value->id]['ans']      = $result;
+                $input_result[$value->id]['question']       = $value->question;
+                $input_result[$value->id]['ans']            = $result;
+                $input_result[$value->id]['option_type']  = $value->options->type;
             }
         }
         $data = compact('results', 'input_result','title');
         // }
         // dd($data);  
         return view('admin.surveys.result', $data);
+    }
+
+    public function contactUsIndex()
+    {
+        $title     = 'Contact us';
+        $contacts  = ContactUs::latest()->get();
+        $data      = compact('title','contacts');
+        return view('admin.contact-us',$data);
     }
 }

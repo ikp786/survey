@@ -58,7 +58,7 @@
               <ul class="started-steps">
                 <li> Create a new session ID below for your group.</li>
                 <li> Share the session ID with your group.</li>
-                <li> Fill in the questionnaire and we will email you the average salary.</li>
+                <li> Fill in the questionnaire and we will email the group average salary.</li>
               </ul>
               <p class="lead fs-lg"><span class="web-tag-line">Insights in an instant!</span></p>
               <!-- <p class="lead fs-lg"><span>We email you the group’s average salary amount without asking your name!</span></p> -->

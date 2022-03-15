@@ -1913,11 +1913,7 @@ ul.basic-list-detail {
 .basic-questions {
   padding-left: 15px;
 }
-.basic-questions li{
-       float: left;
-    width: 43%;
-    margin: 3px 0px 0px 15px;
-}
+
 .parti-list {
     margin-top: 10px;
     text-align: center;

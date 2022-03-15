@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,5 +46,20 @@ class HomeController extends Controller
         $title = 'who-we-are';
         $data  =  compact('title');
         return view('front.who-we-are',$data);
+    }
+
+    public function storeContactUs(Request $request)
+    {        
+        if($request->ajax()){
+            $save = ContactUs::create($request->all());
+            $data  = $request->all();
+            if($save->id > 0){
+                // \Mail::to('info@wageshare.com')->send(new \App\Mail\ContactUsMail($data));
+                \Mail::to('khanebrahim643@gmail.com')->send(new \App\Mail\ContactUsMail($data));
+            return 1;
+            }else{
+                return  2;
+            }
+        }
     }
 }

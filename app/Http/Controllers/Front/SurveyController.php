@@ -16,21 +16,22 @@ class SurveyController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'unique_id'          => 'required|unique:surveys,unique_id,NULL,id,deleted_at,NULL'
-        ], ['unique_id.required' => "* The unique id field is requireds."]);
+        ], ['unique_id.required' => " *the unique id field is required"]);
         if ($validator->passes()) {
-            $id = Survey::create(['unique_id' => $request->unique_id, 'user_type' => 'creater']);
-            return response()->json(['success' => 'Added new records.', 'survey_id' => $id->id]);
+            // $id = Survey::create(['unique_id' => $request->unique_id, 'user_type' => 'creater']);
+            return response()->json(['success' => 'Added new records.', 'survey_id' => $request->unique_id]);
         }
         return response()->json(['error' => $validator->errors()->all()]);
     }
 
     public function createServey($id = null)
     {
-        $survey = Survey::where('id', $id)->first();
+        // $survey = Survey::where('unique_id', $id)->first();
         if (empty($survey)) {
-            return redirect()->route('index')->with('Failed', 'Sorry! something wrong.');
+            // return redirect()->route('index')->with('Failed', 'Sorry! something wrong.');
         }
-        $unique_id    = $survey->unique_id;
+        // dd($survey);
+        $unique_id    = $id;
         $title      = 'Create Servey';
         $questions  = Question::all();
         $data       = compact('title', 'unique_id', 'questions');
@@ -40,8 +41,8 @@ class SurveyController extends Controller
     public function saveSurveyByCreator(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'unique_id'         => 'required|exists:surveys,unique_id',
-            'email'             => 'required|email|unique:surveys,email',
+            'unique_id'         => 'required',
+            'email'             => 'required|email',
             'question_type'     => 'required|In:basic,advance',
             // 'end_date'          => 'required|date|after_or_equal:today',
             'number_of_attempt' => 'required|integer|digits_between:1,10'
@@ -52,10 +53,11 @@ class SurveyController extends Controller
             'email.email'                   => "please enter a valid email address"
         ]);
         if ($validator->passes()) {
-            $data               =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt');
+            $data               =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt','unique_id');
             $data['link']       =  asset('start-survey/' . $request->unique_id);
             $data['ip_address'] =  $this->get_client_ip();
-            $survey = Survey::where('unique_id', $request->unique_id)->update($data);
+            $survey = Survey::create($data);
+            // $survey = Survey::where('unique_id', $request->unique_id)->update($data);
             return response()->json(['success' => 'Survey created success.', 'data' => $data['link']]);
         }
         return response()->json(['error' => $validator->errors()->first()]);
@@ -140,6 +142,38 @@ class SurveyController extends Controller
         return view('front.quiz', $data);
     }
 
+
+    public function quizStartSelf(Request $request)
+    {
+        $this->validate($request, [
+            'email'       => 'required|email',
+            'unique_id'   => 'required|exists:surveys,unique_id',
+        ]);
+        $survery        = Survey::where('unique_id', $request->unique_id)->first();
+        if ($survery->question_type == 'basic') {
+            $questions      = Question::with('options')->where('type', 'basic')->get();
+        } else {
+            $questions      = Question::with('options')->get();
+        }
+
+        $ip = $this->get_client_ip();
+
+        $survey_taker_id     = Survey::create(
+            [
+                'email'          => $request->email,
+                'ip_address'     => $ip,
+                'unique_id'      => $request->unique_id,
+                'user_type'      => 'taker',
+                'survey_id'      => $survery->id,
+                'question_type'  => $survery->question_type
+            ]
+        )->id;
+        $title          = 'Start Quiz';
+        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id');
+
+        return view('front.quiz', $data);
+    }
+
     // public function saveOptionQuiz(Request $request)
     // {
     //     if ($request->ajax()) {
@@ -184,7 +218,7 @@ class SurveyController extends Controller
         $survery_taker = Survey::where('survey_id', $survery->id)->where('is_complete', 1)->get();
         if (count($survery_taker) >= $survery->number_of_attempt) {
             foreach ($survery_taker as $key => $value) {
-                $this->results($survery->id, $value->email);
+                $this->surveyCreaterResult($survery->id, $value->email);
                 $value->is_email_sent = 1;
                 $value->save();
             }
@@ -226,7 +260,7 @@ class SurveyController extends Controller
 
     public function surveyCreaterResult($id, $email = null)
     {
-        $email       =  isset($email) ? $email : 'khanebrahim643@gmail.com';
+        // $email       =  isset($email) ? $email : 'khanebrahim643@gmail.com';
         $surverys    =  Survey::find($id);
         if ($surverys->question_type == 'basic') {
             $questions   =  Question::with('options')->where(['type' => $surverys->question_type])->get();
@@ -250,8 +284,9 @@ class SurveyController extends Controller
 
                 $result  = Result::where(['question_id' => $value->id, 'survey_creater_id' => $surverys->id])->pluck('option_value');
 
-                $input_result[$value->id]['question'] = $value->question;
-                $input_result[$value->id]['ans']      = $result;
+                $input_result[$value->id]['question']       = $value->question;
+                $input_result[$value->id]['ans']            = $result;
+                $input_result[$value->id]['option_type']  = $value->options->type;
             }
         }
         if (!empty($results) && !empty($input_result)) {

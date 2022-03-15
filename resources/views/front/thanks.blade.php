@@ -22,7 +22,7 @@
                 <span>Your submission has been received</span>
             </div>
             <div class="title pt-1">
-                <h3>Thankyou For Give Answer <span> You will receive the result on your registered email.</span></h3>
+                <h3>Thank you for using Wage Share. <span> Once all the participants have submitted their responses, we will email everyone the results. If at least 3 people fill out the results, we will send out an email after 24 hours.</span></h3>
             </div>
         </div>
     </div>
