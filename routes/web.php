@@ -44,6 +44,7 @@ Route::controller(SurveyController::class)->group(function () {
     Route::post('save-survey-uniqueId-by-creator', 'saveSurveyUniqueIdByCreator')->name('front.save-survey-uniqueId-by-creator');
     Route::post('save-survey-by-creator', 'saveSurveyByCreator')->name('front.save-survey-by-creator');
     Route::get('create-survey/{id}', 'createServey')->name('front.create-survey');
+    Route::post('check-survey-uniqueId-by-taker','checkSurveyUniqueIdByTaker')->name('front.check-survey-uniqueId-by-taker');
     Route::get('start-survey/{id?}', 'startServey')->name('front.start-survey');
     Route::post('quiz-start/{id}', 'quizStart')->name('front.quiz.start');
     Route::post('quiz-start-self', 'quizStartSelf')->name('front.quiz.start.self');

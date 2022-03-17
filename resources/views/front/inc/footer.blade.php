@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+      <div class="col-lg-12">
         <ul class="social-icon">
           <li>
             <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->

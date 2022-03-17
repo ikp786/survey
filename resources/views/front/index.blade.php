@@ -11,15 +11,17 @@
         <div class="left-content private-session m-0">
           <p class="text-center mt-0">Did someone send you a private session ID?</p>
           <form id="search" action="{{route('front.start-survey')}}" method="GET" class="m-auto">
+            @csrf
             <fieldset>
-              <input type="text" name="unique_ids" class="email" placeholder="Enter Code Here..." autocomplete="on" required>
+              <input type="text" name="unique_ids" id="unique_ids" class="email" placeholder="Enter Code Here..." autocomplete="on" required>
             </fieldset>
+            <div class="error-message-taker"></div>
             <fieldset>
-              <button type="submit" class="main-button">Continue</button>
+              <button type="submit" class="main-button survey-submit-taker">Continue</button>
             </fieldset>
           </form>
+          
         </div>
-
       </div>
     </div>
     <div class="row">
@@ -58,7 +60,7 @@
               <ul class="started-steps">
                 <li> Create a new session ID below for your group.</li>
                 <li> Share the session ID with your group.</li>
-                <li> Fill in the questionnaire and we will email the group average salary.</li>
+                <li> Fill in the questionnaire and we will email the group the average salary.</li>
               </ul>
               <p class="lead fs-lg"><span class="web-tag-line">Insights in an instant!</span></p>
               <!-- <p class="lead fs-lg"><span>We email you the group’s average salary amount without asking your name!</span></p> -->
@@ -257,11 +259,41 @@ $(document).ready(function() {
                 $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
             });
         }
+
+        $(".survey-submit-taker").click(function(e){
+            e.preventDefault();
+       
+            var _token = $("input[name='_token']").val();
+            var unique_ids = $("input[name='unique_ids']").val();            
+       
+            $.ajax({
+                url: "{{ route('front.check-survey-uniqueId-by-taker') }}",
+                type:'POST',
+                data: {_token:_token, unique_id:unique_ids},
+                success: function(data) {
+                  console.log(data.error)
+                    if($.isEmptyObject(data.error)){
+                        
+                        
+                        window.location.href = "<?php echo  url('start-survey'); ?>/"+unique_ids
+                    }else{
+                      $(".error-message-taker").html(data.error);
+                $(".error-message-taker").css('color','red');
+                    }
+                }
+            });
+       
+        }); 
+       
+        function printErrorMsg2(msg) {
+            
+            $.each( msg, function( key, value ) {
+              alert(value)
+              $(".error-message-taker").html(value);
+                $(".error-message-taker").css('color','red');
+            });
+        }
+
     });
-
-
-  $('.js-preloader.loaded').css('visibility', 'visible');
-  $('.js-preloader.loaded').css('opacity', '1');
 </script>
-
 @endsection

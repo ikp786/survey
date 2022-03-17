@@ -106,7 +106,7 @@
             // alert(responce)
             if (responce == 1) {
               $("#contact")[0].reset();
-              $('.contact-submit-success').html('We receive your query, Our expert will get back to you.');
+              $('.contact-submit-success').html('<strong>We receive your query, Our expert will get back to you.</strong>');
               $('.contact-submit-success').css('color','green');
             } else if (responce == 2) {
               swal("Something wrong");

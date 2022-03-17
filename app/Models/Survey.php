@@ -19,6 +19,7 @@ class Survey extends Model
         'end_date',
         'is_complete',
         'survey_id',
-        'ip_address'
+        'ip_address',
+        'number_of_attempt'
     ];
 }

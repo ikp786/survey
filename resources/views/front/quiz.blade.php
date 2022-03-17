@@ -50,6 +50,7 @@
                <div class="form_timer d-flex flex-column rounded-pill position-absolute countdown_timer" data-countdown="2022/10/24">
                </div>
                <div class="question_title p-2 text-center w-100">
+                  <h6 style="margin-top: 23px;">Custom Session ID: {{$unique_id}}</h6>
                   <h1>{{$val->question}}</h1>
                </div>
             </div>

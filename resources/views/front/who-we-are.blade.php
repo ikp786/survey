@@ -37,7 +37,7 @@
                 </div>
         </div>
         <div class="container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-                <ul class="int-def">
+                <ul class="int-def contact-us-section">
                         <li class="brdr-rht brdr-btm">
                                 <img src="{{asset('assets/front/images/building.png')}}" alt="">
                                 <h4>Company</h4>

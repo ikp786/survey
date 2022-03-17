@@ -14,13 +14,22 @@ class SurveyController extends Controller
 {
     public function saveSurveyUniqueIdByCreator(Request $request)
     {
+        $yesterDay =  date('Y-m-d H:i:s', strtotime("-1 days")); //yesterday date        
+
         $validator = Validator::make($request->all(), [
-            'unique_id'          => 'required|unique:surveys,unique_id,NULL,id,deleted_at,NULL'
+            // 'unique_id'          => 'required|unique:surveys,unique_id,NULL,id,deleted_at,NULL'
+            'unique_id'          => 'required'
         ], ['unique_id.required' => " *the unique id field is required"]);
+        $chekExist = Survey::where('unique_id', $request->unique_id)->whereBetween('created_at', [$yesterDay, date('Y-m-d H:i:s')])->where('user_type', 'creater')->count();
+        if ($chekExist > 0) {
+            $err = ['*The unique id has already been taken.'];
+            return response()->json(['error' => $err]);
+        }
         if ($validator->passes()) {
             // $id = Survey::create(['unique_id' => $request->unique_id, 'user_type' => 'creater']);
             return response()->json(['success' => 'Added new records.', 'survey_id' => $request->unique_id]);
         }
+        
         return response()->json(['error' => $validator->errors()->all()]);
     }
 
@@ -31,7 +40,7 @@ class SurveyController extends Controller
             // return redirect()->route('index')->with('Failed', 'Sorry! something wrong.');
         }
         // dd($survey);
-        $unique_id    = $id;
+        $unique_id  = $id;
         $title      = 'Create Servey';
         $questions  = Question::all();
         $data       = compact('title', 'unique_id', 'questions');
@@ -53,7 +62,7 @@ class SurveyController extends Controller
             'email.email'                   => "please enter a valid email address"
         ]);
         if ($validator->passes()) {
-            $data               =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt','unique_id');
+            $data               =  $request->only('email', 'question_type', 'end_date', 'number_of_attempt', 'unique_id');
             $data['link']       =  asset('start-survey/' . $request->unique_id);
             $data['ip_address'] =  $this->get_client_ip();
             $survey = Survey::create($data);
@@ -61,6 +70,32 @@ class SurveyController extends Controller
             return response()->json(['success' => 'Survey created success.', 'data' => $data['link']]);
         }
         return response()->json(['error' => $validator->errors()->first()]);
+    }
+
+
+
+    public function checkSurveyUniqueIdByTaker(Request $request)
+    {
+
+        $unique_id = $request->unique_id;
+
+        $yesterDay =  date('Y-m-d H:i:s', strtotime("-1 days")); //yesterday date        
+        $chekSurveyExpire = Survey::where(['unique_id' => $unique_id])->orderBy('created_at', 'desc')->first();
+        $ip = $this->get_client_ip();
+        $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id, 'user_type' => 'taker'])->orderBy('created_at', 'desc')->count();
+        $chekSurveyComplete = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
+        $survey = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->orderBy('created_at', 'desc')->first();
+        if (trim($unique_id) == '') {
+            return response()->json(['error' => '* The unique id field is required.']);
+        } elseif (empty($survey)) {
+            return response()->json(['error' => '* Session Id not found']);
+        } elseif ($chekExist > 0) {
+            return response()->json(['error' => '* this survey has been  already taken.']);
+        } elseif ($chekSurveyComplete->is_complete == 1) {
+            return response()->json(['error' => '* this survey has been  closed.']);
+        } else if ($chekSurveyExpire->created_at < $yesterDay) {
+            return response()->json(['error' => '* this survey has been  Expired.']);
+        }
     }
 
     function get_client_ip()
@@ -88,17 +123,21 @@ class SurveyController extends Controller
         if ($request->unique_ids) {
             $unique_id = $request->unique_ids;
         }
-
+        $yesterDay =  date('Y-m-d H:i:s', strtotime("-1 days")); //yesterday date
+        // echo $yesterDay;die;
+        $chekSurveyExpire = Survey::where(['unique_id' => $unique_id])->orderBy('created_at', 'desc')->first();
         $ip = $this->get_client_ip();
-        $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id, 'user_type' => 'taker'])->count();
+        $chekExist = Survey::where(['ip_address' => $ip, 'unique_id' => $unique_id, 'user_type' => 'taker'])->orderBy('created_at', 'desc')->count();
         $chekSurveyComplete = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
-        $survey = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->first();
+        $survey = Survey::where(['unique_id' => $unique_id, 'user_type' => 'creater'])->orderBy('created_at', 'desc')->first();
         if (empty($survey)) {
             return redirect()->route('index')->with('Failed', 'Session Id not found');
         } elseif ($chekExist > 0) {
             return redirect()->route('index')->with('Failed', 'Sorry! this survey has been  already taken.');
         } elseif ($chekSurveyComplete->is_complete == 1) {
             return redirect()->route('index')->with('Failed', 'Sorry! this survey has been  closed.');
+        } else if ($chekSurveyExpire->created_at < $yesterDay) {
+            return redirect()->route('index')->with('Failed', 'Sorry! this survey has been  Expired.');
         }
         if ($survey->question_type == 'basic') {
             $questions      = Question::where('type', $survey->question_type)->get();
@@ -117,6 +156,10 @@ class SurveyController extends Controller
             'email'       => 'required|email',
             'unique_id'   => 'required|exists:surveys,unique_id',
         ]);
+        $checkExist        = Survey::where(['unique_id' => $request->unique_id, 'email' => $request->email])->count();
+        if ($checkExist > 0) {
+            return redirect()->back()->with('Failed', 'Sorry! * The Email already  taken.');
+        }
         $survery        = Survey::where('unique_id', $request->unique_id)->first();
         if ($survery->question_type == 'basic') {
             $questions      = Question::with('options')->where('type', 'basic')->get();
@@ -137,7 +180,8 @@ class SurveyController extends Controller
             ]
         )->id;
         $title          = 'Start Quiz';
-        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id');
+        $unique_id      = $request->unique_id;
+        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id', 'unique_id');
 
         return view('front.quiz', $data);
     }
@@ -169,7 +213,8 @@ class SurveyController extends Controller
             ]
         )->id;
         $title          = 'Start Quiz';
-        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id');
+        $unique_id      = $request->unique_id;
+        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id', 'unique_id');
 
         return view('front.quiz', $data);
     }

@@ -10,7 +10,7 @@
           <div class="col-lg-12 col-md-12 align-self-center ">
             <div class="left-content create-survey-slider header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
               <input type="hidden" id="unique_id" name="unique_id" value="{{$unique_id}}">
-              <h6>You’ve Created the session: {{$unique_id}}</h6>
+              <h6>You’ve Created the session: <span>{{$unique_id}}</span></h6>
               <h2>Which questions should we ask?</h2>
               <div class="csmt-rdo">
                 <div class="row">
@@ -69,10 +69,13 @@
                                 @endif
                                 @endforeach
                               </div>
-
+                             
                             </div>
                           </ul>
                         </ul>
+                    <!--      <div class="text-left">
+                                <p class="input-value">*If it does not apply, input 0</p>
+                              </div> -->
                         <!-- <ul class="basic-list-detail">
                         
                           <ul class="basic-questions">

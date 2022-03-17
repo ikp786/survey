@@ -240,6 +240,7 @@ header
 .background-header .logo,
 .background-header .main-nav .nav li a {
   color: #1e1e1e!important;
+
 }
 
 .background-header .main-nav .nav li:hover a {
@@ -617,6 +618,7 @@ header
   }
   .header-area .main-nav .logo {
     color: #1e1e1e;
+
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
@@ -731,9 +733,7 @@ header
   p.lead.fs-lg.esey-stepes {
     margin: 13px 0px;
 }
-  .main-banner .left-content h4{
-    margin: 20px 0 !important;
-  }
+ 
   ::placeholder{
     overflow: hidden;
   white-space: nowrap;
@@ -773,7 +773,7 @@ header
         font-size: 1.11rem;
 }
   .started-steps li{
-    text-align: left;
+    text-align: left !important;
   }
   .private-session {
     margin-top: 20px !important;
@@ -793,6 +793,7 @@ header
   .header-area .main-nav .nav {
     display: flex !important;
   }
+
 }
 
 /* 
@@ -945,7 +946,19 @@ Banner Style
   color: #23c686;
   margin-bottom: 15px;
 }
+.main-banner .left-content h6 span{ 
+     background: conic-gradient( hsl(0deg 100% 50%), hsl(0deg 100% 48%), hsl(0deg 0% 0%) ) fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #f70000;
+    text-align: center; 
+}
 
+.input-value{
+       background: conic-gradient( hsl(0deg 100% 50%), hsl(0deg 100% 48%), hsl(0deg 0% 0%) ) fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #f70000;
+    text-align: left !important;  
+}
 .main-banner .left-content h2 {
      font-size: 37px;
     font-weight: 700;
@@ -990,9 +1003,10 @@ button.btn-link {
 .main-banner .left-content h4{
   color: #343434;
     font-weight: 600;
-    margin: 10px 0;
-    font-size: 18px;
-    margin: 0;
+    margin: 10px 0;    
+    font-size: 24px;
+    margin: 20px 0 15px;
+
 }
 
 .esey-stepes span{
@@ -1001,11 +1015,14 @@ button.btn-link {
 }
 
 .main-banner .left-content p {
-      margin: 4px 0px;
+         display: block;
+    font-size: 16px;
     font-weight: 400;
-    color: #808080;
-    margin-top: 0;
-    font-size: 19px !important;
+    margin: 5px 0;
+    font-family: 'Rubik',sans-serif !important;
+    line-height: 30px;
+   text-align: center;
+    color: #484848;
 }
 .private-session{
   margin-top: -70px !important;
@@ -1514,9 +1531,8 @@ responsive
     margin-bottom: 70px ;
 }
   .main-banner .left-content {
-    margin-right: 0px;
-    text-align: center;
-    margin-bottom: 45px;
+    margin-right: 0px; 
+    margin-bottom: 15px;
   }
   .main-banner:after {
     top: 76px;
@@ -1755,14 +1771,15 @@ font-family: 'Rubik',sans-serif !important;
     color: #565656;
     margin-bottom: 10px;
 }
-.how-works span{
-  display: block;
-  font-size: 1.3rem ;
-  font-weight: 300;
-  margin: 5px 0;
-      font-family: 'Rubik',sans-serif !important;
-      line-height: 30px;
-      text-align: justify;
+.how-works span {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 5px 0;
+    font-family: 'Rubik',sans-serif !important;
+    line-height: 30px;
+    text-align: justify;
+    color: #484848;
 }
 .how-works h2{
 font-family: 'Rubik',sans-serif !important;
@@ -2088,9 +2105,10 @@ ul.basic-list-detail {
     text-align: justify;
 }
 .steps-details ul li {
-  font-size: 13px;
-  margin-bottom: 8px;
-  color: #000;
+   
+    font-size: 16px;
+    line-height: 30px;
+    color: rgb(46, 46, 46);
 }
 
 .bg-color{
@@ -2344,4 +2362,44 @@ img.shapes-4 {
   justify-content: center;
   margin: auto;
   text-align: center;
+}
+
+
+
+
+
+@media screen and (max-width: 767px) {
+   
+ .main-banner .left-content {
+  text-align: left;
+ }
+  .main-banner .left-content h4 {
+      font-size: 24px;
+      margin: 0 0 10px;
+  }
+  .background-header .logo,
+.background-header .main-nav .nav li a {
+  color: #1e1e1e!important;
+      line-height: 72px !important;
+}
+.main-banner .left-content p{
+  text-align: left;
+}
+.left_side_img.d-md-block{
+  text-align: center;
+ }
+ .steps-details p {
+    text-align: left;
+}
+.contact-us-section p{
+  line-height: 23px;
+}
+}
+.contact-submit-success {
+    margin-top: 10px;
+}
+.error-message-taker {
+    padding: 5px 10px 0;
+    text-align: left;
+    font-size: 12px;
 }
