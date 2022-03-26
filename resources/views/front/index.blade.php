@@ -155,6 +155,13 @@
         </div>
       </div>
     </div>
+
+    <section>
+  <div class="container">
+    <img src="{{asset('assets/front/images/survey-avg-salary.png')}}" alt="">
+  </div>
+</section>
+    
   </div>
   </script>
 </section>

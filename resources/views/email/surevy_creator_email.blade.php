@@ -60,8 +60,11 @@
             @endforeach
             @foreach(end($val) as $key2 => $val2)
             @php
-            $arrCount = $val2['count'] / $total_survey_taker *100;
-            @endphp
+            $arrCount = 0; @endphp
+            {{--@if(is_int($val2['count']) && is_int($total_survey_taker))--}}
+            
+            @php $arrCount = $val2['count'] / $total_survey_taker *100; @endphp
+            {{--@endif            --}}
             <div class="ques-option" style="margin-bottom: 20px;">
                 <h4 style="margin: 0 0 10px;">{{$val2['value']}} <span style="float: right;">{{$arrCount}}%</span></h4>
                 <div class="progress-bar" style="position: relative; width: 100%; height: 10px; background-color: #c2c2c2; border-radius: 50px;">
@@ -88,7 +91,7 @@
         @foreach($data['input_result'] as $key => $val)
         <div class="ques-heading" style="padding: 10px 20px;">
             <h3>{{$val['question']}}</h3>
-            @if($val['option_type'] == 'text')
+            @if($val['option_type'] == 'input')
             @foreach($val['ans'] as $key2 => $val2)
 
             <div class="ques-option" style="margin-bottom: 20px;">
@@ -104,7 +107,9 @@
             @else
             @php $number_count = 0; @endphp
             @foreach($val['ans'] as $key3 => $val3)
+            {{--@if(is_int($val3))--}}
             @php $number_count = $number_count+$val3; @endphp
+            {{--@endif--}}
             @endforeach
             <div class="ques-option" style="margin-bottom: 20px;">
                 <span>{{ round($number_count/count($val['ans']),2) }}</span>

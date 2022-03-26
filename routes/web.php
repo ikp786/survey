@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\SuggestionController;
 use App\Http\Controllers\Admin\SurveyController as AdminSurveyController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SurveyController;
@@ -51,6 +52,8 @@ Route::controller(SurveyController::class)->group(function () {
     Route::post('save-quiz', 'saveQuiz')->name('front.save-quiz');
     Route::get('results/{id}/{email}', 'results')->name('results');
     Route::get('survey-creater-result/{id}', 'surveyCreaterResult')->name('survey-creater-result');
+    Route::get('survey-resultcron-job','surveyResultCronJob');
+    Route::get('testorderByAsc','testorderByAsc');
 });
 
 Route::controller(HomeController::class)->group(function () {
@@ -108,6 +111,21 @@ Route::group(['prefix' => 'admin'], function () {
             Route::PATCH('states/update/{id}', 'update')->name('admin.states.update');
             Route::delete('states/destroy{id}', 'destroy')->name('admin.states.destroy');
         });
+
+        /*
+|--------------------------------------------------------------------------
+| SUGGESTIONS CREATE STORE DELETE UPDATE EDIT 
+|--------------------------------------------------------------------------
+*/
+
+Route::controller(SuggestionController::class)->group(function () {
+    Route::get('suggestions/index', 'index')->name('admin.suggestions.index');
+    Route::get('suggestions/create', 'create')->name('admin.suggestions.create');
+    Route::post('suggestions/store', 'store')->name('admin.suggestions.store');
+    Route::get('suggestions/edit/{id}', 'edit')->name('admin.suggestions.edit');
+    Route::PATCH('suggestions/update/{id}', 'update')->name('admin.suggestions.update');
+    Route::delete('suggestions/destroy{id}', 'destroy')->name('admin.suggestions.destroy');
+});
 
         /*
 |--------------------------------------------------------------------------

@@ -52,30 +52,35 @@ i.fa.fa-trash {
         <div class="rounded h-100 p-4 qus-table">
                 @include('admin.inc.validation_message')
                 @include('admin.inc.auth_message')
-                <div class="main-title-heading">
-                <h6 class="mb-4">Users List</h6>
-                </div>
+                <h6 class="mb-4">Suggestions List</h6>
+                <h6 style=" float: right;margin-top: -45px;" class="mb-4"> <a href="{{route('admin.suggestions.create')}}"><button style="color: #009CFF;" class="btn">Add</button> </a> </h6>
                 <div class="table-responsive">
                     <table class="table all-type-ques" id="dataTable_2">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Created At</th>
+                                <th scope="col">Title</th>
+                                <th>Created At</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $cnt =1; @endphp
-                            @forelse($users as $val)
+                            @forelse($suggestions as $val)
                             <tr>
                                 <th scope="row">{{$cnt}}</th>
-                                <td>{{$val->email}}</td>
-                                <td>{{$val->user_type}}</td>
+                                <td>{{$val->title}}</td>
                                 <td>{{$val->created_at}}</td>
+                                <td class="delete-edit-btn">
+
+                                <a class="btn-xs sharp me-1" href="{{ route('admin.suggestions.edit',$val->id) }}"><i class="fas fa-edit text-secondary" aria-hidden="true"></i></a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.suggestions.destroy', $val->id],'style'=>'display:inline']) !!}<button onclick="return confirm('Are you sure to delete Suggestio?')" class="delete btn-xs sharp" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                             @php $cnt++; @endphp
                             @empty
+
                             @endforelse
                         </tbody>
                     </table>
@@ -90,11 +95,8 @@ i.fa.fa-trash {
 <script>
     $(document).ready(function() {
         $('#dataTable_2').DataTable({
-             
-             "oLanguage": {
-             "sLengthMenu": "Show _MENU_ "
-         }
-         });
+
+        });
     });
 </script>
 @endsection

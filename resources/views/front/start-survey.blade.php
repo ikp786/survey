@@ -9,8 +9,11 @@
         <div class="row">
           <div class="col-lg-6 align-self-center">
             <div class="left-content how-works header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-              <h6>You’ve Created the session: {{$survey->unique_id}}</h6>
-              <h2>What set of questions should be included in your results?</h2>
+              <h6 class="participating">You’ve been invited to the session: <span>{{$survey->unique_id}}</span></h6>
+              <h4>
+                <!-- What set of questions should be included in your results? -->
+                Below are the questions that you will be asked to answer. Once everyone is done, we will email everyone the results!
+              </h4>
               <div class="csmt-rdo">
                 <div class="row">
                   <div class="col-md-12">
@@ -29,8 +32,8 @@
                 </div>
               </div>
               <div class="parti-list">
-                <h4>How many people will be participating? <span class="total-ser">{{$survey->number_of_attempt}}</span></h4>
-                <p class="lead fs-lg"><span>We will email the results after 24 hours if at least 3 people answer the questions</span></p>
+                <h4 class="participating">{{$survey->number_of_attempt}} people were asked to participating in this session</h4>
+                <!-- <p class="lead fs-lg"><span>We will email the results after 24 hours if at least 3 people answer the questions How many people will be participating?</span></p> -->
               </div>
               <form id="search" action="{{route('front.quiz.start',$survey->unique_id)}}" method="post">
                 @csrf

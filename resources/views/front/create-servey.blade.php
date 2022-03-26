@@ -46,30 +46,22 @@
 
                                 @if($val->type != 'basic')
                                 @php $cnt++; @endphp
-                                @if($cnt <= 5) <li>{{$val->question}}</li>
-
+                                @if($cnt <= $basicQuestion_count) <li>{{$val->question}}</li>
                                   @endif
                                   @endif
                                   @endforeach
-
                               </div>
-
                               <div class="col-md-6">
                                 @php $cnt = 1; @endphp
                                 @forelse($questions as $key => $val)
-
                                 @if($val->type != 'basic')
-
-                                @if($cnt >= 5)
-
+                                @if($cnt >= $basicQuestion_count)
                                 <li>{{$val->question}}</li>
-
                                 @endif
                                 @php $cnt++; @endphp
                                 @endif
                                 @endforeach
-                              </div>
-                             
+                              </div>                             
                             </div>
                           </ul>
                         </ul>
@@ -181,23 +173,26 @@
             // }, 2000);
 
 
-            // var count = 5;
-            // var countdown = setInterval(function() {
-            //   $("#redirect-survey-message").html(" We are redirecting you to the survey page in next " + count + " sec... ");
-            //   if (count == 0) {
-            //     clearInterval(countdown);
+            var count = 5;
+            var countdown = setInterval(function() {
+              $("#redirect-survey-message").html(" We are redirecting you to the survey page in next " + count + " sec... ");
+              if (count == 0) {
+                clearInterval(countdown);
                 document.getElementById("start-survey-submit").submit();
 
                 // window.open(window.location.href = data.data);
 
-            //   }
-            //   count--;
-            // }, 1000);
+              }
+              count--;
+            }, 1000);
 
 
 
           } else {
             if (data.error == "* number of participants should be a numerical value") {
+              $(".number-error-msg").html(data.error);
+              $(".number-error-msg").css('display', 'block');
+            }else if(data.error == "The minimum participant should not be less than 3") {
               $(".number-error-msg").html(data.error);
               $(".number-error-msg").css('display', 'block');
             } else {

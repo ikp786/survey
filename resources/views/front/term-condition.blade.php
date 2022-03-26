@@ -8,15 +8,15 @@
         <div class="box-text">
                 <h1>Terms and conditions <br></h1>  
                 <h2>Personal data</h2>
-                <p>Oview, limited liability partnership (LLP), including its subsidiaries,
-                        affiliates, divisions, contractors, and all data sources and suppliers, (collectively “Oview”, “we”,
+                <p>Wage Share, limited liability partnership (LLP), including its subsidiaries,
+                        affiliates, divisions, contractors, and all data sources and suppliers, (collectively “Wage Share”, “we”,
                         “us” or
                         “our”) – a global online platform where opinions are created, acknowledged and transformed into
                         universally
                         accessible visualised data with the intention to induce a civilization that is inspired by the
                         freely
                         created opinions of the majority, which are supported by unbiased information. </p>
-                <p>Oview provides access to a system where users can:</p>
+                <p>Wage Share provides access to a system where users can:</p>
                 <p>– create polar questions (Yes/No questions) about current articles (the
                         “survey questions”).
                         This is
@@ -28,28 +28,28 @@
                         statistical tables, charts, graphics or other visual forms (“statistical reports”), are always
                         aggregated
                         into statistical information without compromising individual votes.</p>
-                <p>For these purposes Oview asks you to provide your personal data which
+                <p>For these purposes Wage Share asks you to provide your personal data which
                         will be
-                        used by Oview to create statistical reports based on personal opinions about different news
+                        used by Wage Share to create statistical reports based on personal opinions about different news
                         articles, items,
                         issues, topics, and other internet sources which users link while creating their survey questions in
                         order
                         to help other users to
                         understand the general context of these survey questions (the
-                        “articles”). Oview provides you with access to our services only after you create an account in
-                        Oview as
-                        defined in the Privacy Policy in the part “Registration in Oview”. As soon as you sign the Terms and
-                        Conditions and finish the whole registration process in the Oview backend
+                        “articles”). Wage Share provides you with access to our services only after you create an account in
+                        Wage Share as
+                        defined in the Privacy Policy in the part “Registration in Wage Share”. As soon as you sign the Terms and
+                        Conditions and finish the whole registration process in the Wage Share backend
                             of the app or in the
                             mobile
-                            app (the “registration”), your personal data will be transferred to Oview and you will
+                            app (the “registration”), your personal data will be transferred to Wage Share and you will
                         become an
-                        Oview user (the “user”). Becoming an Oview user contains the right to express your opinion by
+                        Wage Share user (the “user”). Becoming an Wage Share user contains the right to express your opinion by
                         voluntary
                         participation in survey questions and/or the right to create survey questions. </p>
-                <p>Oview controls personal data. It collects and processes personal data
+                <p>Wage Share controls personal data. It collects and processes personal data
                         only for
-                        the purposes of Oview activities. Oview respects your privacy and complies with Dutch&nbsp;and
+                        the purposes of Wage Share activities. Wage Share respects your privacy and complies with Dutch&nbsp;and
                         international
                         data protection law.</p>
                 <br>
@@ -58,11 +58,11 @@
     
     
                 <h2>Personal data</h2>
-                <p>During the registration in Oview we ask you to provide personal data
+                <p>During the registration in Wage Share we ask you to provide personal data
                         which
                         includes your name, birth date, gender, education level, location (city), language preference and/or
                         other
-                        categories of personal data which Oview will decide to include in the future. Providing this
+                        categories of personal data which Wage Share will decide to include in the future. Providing this
                         personal data
                         is optional, and it determines the amount of information in statistical reports the user will be
                         able to see
@@ -71,11 +71,11 @@
                         and/or add
                         personal data, and that will immediately change the extent of access to the relevant statistical
                         reports.</p>
-                <p>Oview can collect, process, store and use your technical
+                <p>Wage Share can collect, process, store and use your technical
                         information such as cookies, and/or other technologies, and
                         subsidiary analytical software as
                         described in our Cookies Policy and in accordance to Dutch and international law. The statistical
-                        information of your activities in your Oview account can be used for improvement of our system
+                        information of your activities in your Wage Share account can be used for improvement of our system
                         including
                         security policies, but not limited to it alone.</p>
                 <p>We collect information from your mobile device about the system and model
@@ -89,9 +89,9 @@
                         alone.</p>
                 <p>You can use third party services (such as Facebook and others) to share
                         personal
-                        data while creating an account in Oview. Only personal data with public access will be collected in
+                        data while creating an account in Wage Share. Only personal data with public access will be collected in
                         the case
-                        of using third party services. Oview does not have direct or indirect intention to collect more
+                        of using third party services. Wage Share does not have direct or indirect intention to collect more
                         personal
                         data than we ask of you during the registration.<span
                         > You can manage the information that we collect through third party
@@ -106,7 +106,7 @@
                 <h2>Processing of Personal Data</h2>
                 <p>Without infringement of personal protection and in accordance to Dutch,
                         European,
-                        and international Data Protection Law. Oview has the right to
+                        and international Data Protection Law. Wage Share has the right to
                         use all
                         data collected for actions or a set of actions, including the collection, recording, organization,
                         storage,
@@ -116,8 +116,8 @@
                         (“processing”).</p>
                 <p>Your personal data is processed according to the Terms and Conditions and
                         Privacy
-                        Policy of Oview.</p>
-                <p>Oview will store personal data on a special database in the server of
+                        Policy of Wage Share.</p>
+                <p>Wage Share will store personal data on a special database in the server of
                         third
                         parties (the “provider”). This provider stores personal data in accordance with the Terms and
                         Conditions of
@@ -135,7 +135,7 @@
                         increase the level of safety of your personal data.</p>
                 <p>With respect to your privacy and following the requirements of data
                         protection,
-                        your personal data are used by Oview only after its depersonalization, mixing and modification. The
+                        your personal data are used by Wage Share only after its depersonalization, mixing and modification. The
                         modification of information is the final step of creating statistical reports. </p>
                 <p>All results of public opinion become public only after the
                         user<b>`</b>s voluntarily participation in survey questions,
@@ -151,19 +151,19 @@
                 </h2>
                 <p>You have the right to know what kind of information related to you is
                         being
-                        processed by Oview, and/or whether your personal data is being processed or not. You have the right
+                        processed by Wage Share, and/or whether your personal data is being processed or not. You have the right
                         to send
-                        a request to Oview in order to correct, supplement, delete or block information related to you
+                        a request to Wage Share in order to correct, supplement, delete or block information related to you
                         according to
                         your specification based on legitimate grounds and according to the Dutch&nbsp;and international
                         data
-                        protection law. Oview is obliged to inform you when we finish
+                        protection law. Wage Share is obliged to inform you when we finish
                         all
                         actions related to such a withdrawal, in accordance
                         with the term fixed by the law.</p>
-                <p>Users have the right to react to this document and notify Oview, via
+                <p>Users have the right to react to this document and notify Wage Share, via
                         email, what
-                        they would like to change in the Terms and Conditions and why. Oview reserves the right to change
+                        they would like to change in the Terms and Conditions and why. Wage Share reserves the right to change
                         the Terms
                         and Conditions in accordance with these suggestions, but it is not obliged to do so.</p>
                 <br>
@@ -175,13 +175,13 @@
                         and without infringement of your privacy. </p>
                 <p>We encrypt your personal data during transmission, storage, and backup to
                         increase the level of safety of your personal data.</p>
-                <p>Specific employees of Oview have a
+                <p>Specific employees of Wage Share have a
                         key to
                         the codified personal data for the purposes of improvement of the application system including, but
                         not
                         limited to security policy, for ensuring proper operation of the platform, and for other legitimate
                         purposes
-                        related to Oview activities.</p>
+                        related to Wage Share activities.</p>
                 <p>Third parties can view the statistical reports without any personal
                         identification of the users.</p>
                 <br>
@@ -193,9 +193,9 @@
                         Terms and Conditions</h2>
                 <p>You agree, for an unlimited time, to give your consent regarding your
                         personal
-                        data to Oview according to the terms and conditions as described in the Terms and Conditions.
+                        data to Wage Share according to the terms and conditions as described in the Terms and Conditions.
                 </p>
-                <p>Oview has the right to change the Terms and Conditions without any
+                <p>Wage Share has the right to change the Terms and Conditions without any
                         notification
                         unless these changes reduce users<b>’</b> rights; it will not
                         be done
@@ -206,7 +206,7 @@
     
     
                 <h2>General</h2>
-                <p>All the definitions in the Terms and Conditions, including “Oview”,
+                <p>All the definitions in the Terms and Conditions, including “Wage Share”,
                         “user”,
                         “survey question”, “personal data”, “statistical report”, “registration”, “provider”, and others can
                         be used
@@ -225,7 +225,7 @@
                         under the
                         Dutch Law and the law of the court in Utrecht.</p>
                 <p>If you have any questions, suggestions or comments regarding
-                        Oview<b>’</b>s processing of personal data, please contact us
+                        Wage Share<b>’</b>s processing of personal data, please contact us
                         at
                     
                     <br>

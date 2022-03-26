@@ -5,7 +5,6 @@
 
 
 <section class="how-it-works-section">
-
         <div class="container">
                 <div class="row">
                         <div class="col-md-6 col-lg-6 col-sm-12 position-relative wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.25s">
@@ -22,11 +21,9 @@
                                         <h3>Are you making enough?</h3>
                                         <h3> Are you close to the average?</h3>
                                         <p class="lead fs-lg"> <span style="margin-top: 20px;">Here you can have a safe, discrete, and anonymous view into everyone’s salary without judgement or embarrassment.</span></p>
-
                                         <a href="{{route('index')}}" class="learn-more-btn">Create Survey</a>
                                 </div>
                         </div>
-
                 </div>
                 <section class="how-it-wrks">
                         <h2>How does it work?</h2>
@@ -60,7 +57,6 @@
                                 </div>
                         </div>
                 </section>
-
         </div>
 </section>
 <section class="steps" id="step-1">
@@ -72,7 +68,6 @@
                                         <h3>Find 3 or more people that you want to participate.</h3>
                                         <p>Find 3 or more people that you want to participate. Generally speaking, you want to compare to people that are in the same stage of their career as yourself. Remember, this will remain anonymous and only averages will be shared. Reaffirm with the group that this concept only works well if people are honest. We’d recommend using your judgement to ensure that people will put accurate information and have no previous knowledge of people’s respective salary or wage. If you want to establish a different pay calculation because of commission etc. please establish that with your peers before submitting to the survey.</p>
                                 </div>
-
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="steps-img">
@@ -82,7 +77,6 @@
                 </div>
         </div>
 </section>
-
 <section class="steps bg-color pb-4" id="step-2">
         <div class="container">
                 <div class="row">
@@ -103,12 +97,18 @@
                                                         <div class="questions-type">
                                                                 <h2>Basic Salary Questions</h2>
                                                                 <ul class="mt-3">
-                                                                        <li>• State or Province</li>
+                                                                        @forelse($questions as $key => $val)
+                                                                        @if($val->type == 'basic')
+                                                                        <li>{{$val->question}}</li>
+                                                                        @endif
+                                                                        @endforeach
+
+                                                                        <!-- <li>• State or Province</li>
                                                                         <li>• Years of Experience</li>
                                                                         <li>• Company Name</li>
                                                                         <li>• Job Title</li>
                                                                         <li>• Department</li>
-                                                                        <li>• Annual Base Salary (if hourly, please convert to annual)</li>
+                                                                        <li>• Annual Base Salary (if hourly, please convert to annual)</li> -->
                                                                 </ul>
                                                         </div>
                                                 </div>
@@ -117,14 +117,19 @@
                                                                 <h2>Advanced Salary Questions</h2>
                                                                 <h2>Basic Salary Questions plus…</h2>
                                                                 <ul class="mt-3">
-                                                                        <li>• Annual Bonus/Commission</li>
+                                                                        <!-- <li>• Annual Bonus/Commission</li>
                                                                         <li>• Age Range</li>
                                                                         <li>• Highest Level of Education</li>
                                                                         <li>• Signing Bonus</li>
                                                                         <li>• Vacation Days Given</li>
                                                                         <li>• Number Professional Exams completed</li>
                                                                         <li>• Pension provided</li>
-                                                                        <li>• Profit Sharing</li>
+                                                                        <li>• Profit Sharing</li> -->
+                                                                        @forelse($questions as $key => $val)
+                                                                        @if($val->type != 'basic')                                                                        
+                                                                        <li>{{$val->question}}</li>
+                                                                        @endif
+                                                                        @endforeach
                                                                 </ul>
                                                         </div>
                                                 </div>
@@ -143,14 +148,12 @@
                                         <h3>We do ask for email in order to send out the results privately</h3>
                                         <p>We do ask for email in order to send out the results privately. Emails are sent out once the predetermined number of users have all filled out the survey. Once the results are in from all the members, we show the group the range of answers without identifying respective salary/pay. Obviously, you know how much you make but now you get insight into how much the group is making on average.</p>
                                 </div>
-
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="steps-img">
                                         <img src="{{asset('assets/front/images/5.png')}}" alt="">
                                 </div>
                         </div>
-
                 </div>
                 <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -159,7 +162,6 @@
                                         <p>We do not ask for your name or anything that could identify who you are. All you have to do is find like-minded people that are interested in salary insight.</p>
                                 </div>
                         </div>
-
                         <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="steps-details other-details">
                                         <h2>Why do this?</h2>
@@ -178,10 +180,7 @@
                                 </ul>
                         </div>
                         <h5><em>"Inflation, rising cost of living, lack of equity are all reasons to ensure you’re getting paid properly"</em></h5>
-
                 </div>
         </div>
 </section>
-
-
 @endsection

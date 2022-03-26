@@ -330,8 +330,7 @@ button {
   }
 
   .content_box {
-    width: 70%;
-    height: 13rem;
+    width: 70%; 
     margin-top: 3rem;
   }
 
@@ -365,8 +364,7 @@ button {
   }
 
   .content_box {
-    width: 65%;
-    height: 11rem;
+    width: 65%; 
     margin-top: 5rem;
   }
 
@@ -387,8 +385,7 @@ button {
 }
 @media screen and (max-width: 575.98px) {
   .content_box {
-    width: 60%;
-    height: 10rem;
+    width: 60%; 
     margin-top: 5rem;
   }
 

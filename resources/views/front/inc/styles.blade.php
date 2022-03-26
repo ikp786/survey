@@ -1,5 +1,7 @@
 <!-- Bootstrap core CSS -->
 <link href="{{asset('assets/front/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="{{asset('assets/front/css/fontawesome.css')}}">
@@ -12,3 +14,6 @@
 
 <link rel="stylesheet" href="{{asset('assets/front/quiz/css/animate.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/front/quiz/css/style.css')}}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> -->
