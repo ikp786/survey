@@ -269,7 +269,7 @@ class SurveyController extends Controller
         $survery_taker = Survey::where('survey_id', $survery->id)->where('is_complete', 1)->get();
         if (count($survery_taker) >= $survery->number_of_attempt) {
             foreach ($survery_taker as $key => $value) {
-                // $this->surveyCreaterResult($survery->id, $value->email);
+                $this->surveyCreaterResult($survery->id, $value->email);
                 $value->is_email_sent = 1;
                 $value->save();
             }
