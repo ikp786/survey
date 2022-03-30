@@ -54,6 +54,7 @@ Route::controller(SurveyController::class)->group(function () {
     Route::get('survey-creater-result/{id}', 'surveyCreaterResult')->name('survey-creater-result');
     Route::get('survey-resultcron-job','surveyResultCronJob');
     Route::get('testorderByAsc','testorderByAsc');
+    Route::get('testMail','testMail');
 });
 
 Route::controller(HomeController::class)->group(function () {

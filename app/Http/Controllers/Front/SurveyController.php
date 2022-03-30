@@ -13,6 +13,13 @@ use Validator;
 
 class SurveyController extends Controller
 {
+    public function testMail()
+    {
+        $results = ['name' => 'ibrahim'];
+        $email   = 'khanebrahim643@gmail.com';
+        \Mail::to($email)->send(new \App\Mail\TestMail($results));
+    }
+
     public function saveSurveyUniqueIdByCreator(Request $request)
     {
         $yesterDay =  date('Y-m-d H:i:s', strtotime("-2 days")); //yesterday date        
