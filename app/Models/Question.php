@@ -14,7 +14,8 @@ class Question extends Model
 
     protected $fillable = [
         'question',
-        'type'
+        'type',
+        'question_heading'
     ];
 
     function options(){

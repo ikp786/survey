@@ -8,7 +8,6 @@
 .qus-table{
     box-shadow: 0 4px 6px 0 rgb(85 85 85 / 8%), 0 1px 20px 0 rgb(0 0 0 / 7%), 0px 1px 11px 0px rgb(0 0 0 / 7%);
     background: #fff;
-
 } 
  .qus-table table tr th{
     border: 1px solid #ebedf2;
@@ -26,7 +25,6 @@
     letter-spacing: 1px;
     border: 1px solid #ebedf2;
     padding: 10px 10px;
-
 }
 .all-type-ques {
     margin-top: 20px !important;
@@ -41,7 +39,6 @@ color: #888ea8;
 i.fa.fa-trash {
     color: #e7515a !important;
 }
-
 </style>
 @endsection
 @section('content')
@@ -56,15 +53,13 @@ i.fa.fa-trash {
                 <div class="main-title-heading">
                         <h6 class="m-0">Question List {{ collect(request()->segments())->last(); }}  <span style=" float: right;"><a href="{{route('questions.create')}}"><button type="button" class="btn p-0">Add</button> </a></span></h6>  
                     </div>
-                
-           
-                    
                 <div class="table-responsive">
                     <table class="table all-type-ques" id="dataTable_2">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Question</th>
+                                <th scope="col">Question Heading</th>
                                 <th scope="col">Option Type</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Action</th>
@@ -76,10 +71,10 @@ i.fa.fa-trash {
                             <tr>
                                 <th scope="row">{{$cnt}}</th>
                                 <td>{{$val->question}}</td>
+                                <td>{{$val->question_heading}}</td>
                                 <td>{{isset($val->options->type) ? $val->options->type : ''}}</td>
                                 <td>{{$val->created_at}}</td>
                                 <td class="delete-edit-btn">
-
                                 <a class="btn-xs sharp me-1" href="{{ route('questions.edit',$val->id) }}"><i class="fas fa-edit text-secondary" aria-hidden="true"></i></a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['questions.destroy', $val->id],'style'=>'display:inline']) !!}<button onclick="return confirm('Are you sure to delete Question?')" class="delete btn-xs sharp" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     {!! Form::close() !!}
@@ -92,7 +87,6 @@ i.fa.fa-trash {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
@@ -102,8 +96,7 @@ i.fa.fa-trash {
 @section('script')
 <script>
     $(document).ready(function() {
-        $('#dataTable_2').DataTable({
-             
+        $('#dataTable_2').DataTable({             
             "oLanguage": {
             "sLengthMenu": "Show _MENU_ "
         }

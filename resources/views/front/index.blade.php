@@ -79,7 +79,7 @@
           </div>
           <div class="col-lg-6">
             <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-              <img src="{{asset('assets/front/images/slider-bg.png')}}" alt="team meeting">
+              <img src="{{asset('assets/front/images/survey-images.png')}}" alt="team meeting">
             </div>
           </div>
         </div>
@@ -155,13 +155,6 @@
         </div>
       </div>
     </div>
-
-    <section>
-  <div class="container">
-    <img src="{{asset('assets/front/images/survey-avg-salary.png')}}" alt="">
-  </div>
-</section>
-    
   </div>
   </script>
 </section>

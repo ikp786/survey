@@ -13,6 +13,7 @@ use Validator;
 
 class SurveyController extends Controller
 {
+
     public function testMail()
     {
         $results = ['name' => 'ibrahim'];
@@ -227,7 +228,7 @@ class SurveyController extends Controller
         )->id;
         $title          = 'Start Quiz';
         $unique_id      = $request->unique_id;
-        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id', 'unique_id','suggestions');
+        $data           =  compact('title', 'questions', 'survery', 'survey_taker_id', 'unique_id', 'suggestions');
 
         return view('front.quiz', $data);
     }
@@ -255,37 +256,42 @@ class SurveyController extends Controller
 
     public function saveQuiz(Request $request)
     {
-        $survery  = Survey::find($request->survey_creater_id);
-        $ip = $this->get_client_ip();
-        $survery_taker_update = Survey::find($request->survey_taker_id)->update(['ip_address' => $ip, 'is_complete' => 1]);
-        foreach ($request->question as $key => $value) {
-            $option   = Option::where('question_id', $value)->first();
-            $result                        =  new Result();
-            $result->survey_creater_id     =  $request->survey_creater_id;
-            // $result->survey_id             =  $request->survey_creater_id;
-            $result->survey_taker_id       =  $request->survey_taker_id;
-            $result->question_id           =  $value;
-            $result->option_id             =  $option->id;
-            $result->question_type         =  $option->question_type;
-            $result->option_type           =  $option->type;
-            // $result->is_complete              =  1;
-            $result->option_value          =  isset($request->answer[$key]) ? $request->answer[$key] : '';
-            $result->save();
-        }
-
-        $survery_taker = Survey::where('survey_id', $survery->id)->where('is_complete', 1)->get();
-        if (count($survery_taker) >= $survery->number_of_attempt) {
-            foreach ($survery_taker as $key => $value) {
-                $this->surveyCreaterResult($survery->id, $value->email);
-                $value->is_email_sent = 1;
-                $value->save();
+        try {
+            $survery  = Survey::find($request->survey_creater_id);
+            $ip = $this->get_client_ip();
+            $survery_taker_update = Survey::find($request->survey_taker_id)->update(['ip_address' => $ip, 'is_complete' => 1]);
+            foreach ($request->question as $key => $value) {
+                $option   = Option::where('question_id', $value)->first();
+                $result                        =  new Result();
+                $result->survey_creater_id     =  $request->survey_creater_id;
+                // $result->survey_id             =  $request->survey_creater_id;
+                $result->survey_taker_id       =  $request->survey_taker_id;
+                $result->question_id           =  $value;
+                $result->option_id             =  $option->id;
+                $result->question_type         =  $option->question_type;
+                $result->option_type           =  $option->type;
+                // $result->is_complete              =  1;
+                $result->option_value          =  isset($request->answer[$key]) ? $request->answer[$key] : '';
+                $result->save();
             }
-            $survery->is_email_sent = 1; 
-            $survery->is_complete = 1;
-            $survery->save();
-            $this->surveyCreaterResult($survery->id, $survery->email);
+
+            $survery_taker = Survey::where('survey_id', $survery->id)->where('is_complete', 1)->get();
+            if (count($survery_taker) >= $survery->number_of_attempt) {
+                foreach ($survery_taker as $key => $value) {
+                    $this->surveyCreaterResult($survery->id, $value->email);
+                    $value->is_email_sent = 1;
+                    $value->save();
+                }
+                $survery->is_email_sent = 1;
+                $survery->is_complete = 1;
+                $survery->save();
+                $this->surveyCreaterResult($survery->id, $survery->email);
+            }
+            return redirect()->route('front.thanks');
+        } catch (\Throwable $e) {
+
+            return redirect()->back()->with('Failed', $e->getMessage() . ' on line ' . $e->getLine());
         }
-        return redirect()->route('front.thanks');
     }
 
     public function results($id, $email)
@@ -342,8 +348,8 @@ class SurveyController extends Controller
                 $input_result[$value->id]['option_type']    = $value->options->type;
             }
         }
-        // dd($results);
-        if (!empty($results) && !empty($input_result)) {
+        // dd(current($input_result)['ans'][0]);
+        if (!empty($results) && !empty($input_result) && isset(current($input_result)['ans'][0])) {
             $data = ['results' => $results, 'input_result' => $input_result];
             \Mail::to($email)->send(new \App\Mail\SurveyCreaterMail($data));
         }
@@ -373,7 +379,6 @@ class SurveyController extends Controller
 
     public function testorderByAsc()
     {
-
         $data  = Option::orderBy('id', 'desc')->first();
         $dd = (json_decode($data->value));
         sort($dd);

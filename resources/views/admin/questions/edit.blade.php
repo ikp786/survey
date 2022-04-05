@@ -4,7 +4,6 @@
     .dropdown-cut-btn {
         position: relative;
     }
-
     .dropdown-cut-btn button {
         position: relative;
         top: 20px;
@@ -15,7 +14,6 @@
         font-size: 20px;
         color: #787878;
     }
-
     .dropdown-cut-btn input {
         width: 93%;
         float: left;
@@ -60,33 +58,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
 
-                    <div id="add_option_div" class="form-floating mb-3 dropdown-cut-btn">
-<?php //dd(count(json_decode($questions->options->value))); ?>
+                        <div id="add_option_div" class="form-floating mb-3 dropdown-cut-btn">
+                            <?php //dd(count(json_decode($questions->options->value))); 
+                            ?>
 
-                    @if($questions->options->type == 'dropdown' || $questions->options->type == 'radio')
-                        @if(count(json_decode($questions->options->value)) > 0)
-                        @php 
-                        $cnt = 0;
-                        @endphp
-                        @foreach(json_decode($questions->options->value) as $val)
-                        <input type="text" name="option[{{$cnt}}]" value="{{$val}}" class="form-control add_dropdown delete_dropdown{{$cnt}}" data-count="{{$cnt}}" id="add_dropdown">
-                        @if($cnt != 0)<button class="delete_dropdown{{$cnt}}" onclick="remove_dropdown({{$cnt}})" type="button">X</button>@endif<label for="floatingInput">Option</label>
-                        @php $cnt++; @endphp
-                        @endforeach
-                        @else
-                        <input type="text" name="option[0]" class="form-control add_dropdown" data-count="0" id="add_dropdown"><label for="floatingInput">Option</label>
-                        @endif
-                        @elseif($questions->options->type == 'text')
-                        <input type="text" name="option[0]" readonly class="form-control add_dropdown"><label for="floatingInput">Option</label>
-                        @elseif($questions->options->type == 'number')
-                        <input type="text" name="option[0]" readonly class="form-control add_dropdown"><label for="floatingInput">Option</label>
-                    @endif
+                            @if($questions->options->type == 'dropdown' || $questions->options->type == 'radio')
+                            @if(count(json_decode($questions->options->value)) > 0)
+                            @php
+                            $cnt = 0;
+                            @endphp
+                            @foreach(json_decode($questions->options->value) as $val)
+                            <input type="text" name="option[{{$cnt}}]" value="{{$val}}" class="form-control add_dropdown delete_dropdown{{$cnt}}" data-count="{{$cnt}}" id="add_dropdown">
+                            @if($cnt != 0)<button class="delete_dropdown{{$cnt}}" onclick="remove_dropdown({{$cnt}})" type="button">X</button>@endif<label for="floatingInput">Option</label>
+                            @php $cnt++; @endphp
+                            @endforeach
+                            @else
+                            <input type="text" name="option[0]" class="form-control add_dropdown" data-count="0" id="add_dropdown"><label for="floatingInput">Option</label>
+                            @endif
+                            @elseif($questions->options->type == 'text')
+                            <input type="text" name="option[0]" readonly class="form-control add_dropdown"><label for="floatingInput">Option</label>
+                            @elseif($questions->options->type == 'number')
+                            <input type="text" name="option[0]" readonly class="form-control add_dropdown"><label for="floatingInput">Option</label>
+                            @endif
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-md-6">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" value="{{$questions->question_heading}}" name="question_heading" class="form-control">
+                            <label for="floatingInput">Question Heading</label>
+                        </div>
+                    </div>
                 </div>
                 <br><br><br><br>
                 <div class="col-md-6">
@@ -122,7 +126,6 @@
             $('#add_option_div').append(content);
         }
     })
-
     function remove_dropdown(e) {
         $('.delete_dropdown' + e).remove();
     }

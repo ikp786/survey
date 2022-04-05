@@ -28,6 +28,7 @@ class QuestionCreateRequest extends FormRequest
             'type'                  => 'required|In:basic,advance',
             'select_option_type'    => 'required|In:dropdown,input,number,radio',
             'option'                => 'required_if:select_option_type,dropdown,radio|array',
+            'question_heading'      => 'required',
         ];
     }
 }

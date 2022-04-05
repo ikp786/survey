@@ -34,7 +34,7 @@ class QuestionController extends Controller
     {
         $title      = 'Add Question';
         $data       =  compact('title');
-        return view('admin.questions.create',$data);
+        return view('admin.questions.create', $data);
     }
 
     /**
@@ -46,25 +46,23 @@ class QuestionController extends Controller
     public function store(QuestionCreateRequest $request)
     {
         try {
-        $question = new Question();
-        $question->fill($request->only('question', 'type'));
-        $question->save();
-
-        $option = new Option();
-        $option->question_id     =  $question->id;
-        $option->question_type   =  $request->type;
-        $option->type            =  $request->select_option_type;
-
-        if ($request->select_option_type == 'dropdown' || $request->select_option_type == 'radio') {
-            $data = array_filter($request->option);
-            $option->value =  json_encode($data);
+            $question = new Question();
+            $question->fill($request->only('question', 'type', 'question_heading'));
+            $question->save();
+            $option = new Option();
+            $option->question_id     =  $question->id;
+            $option->question_type   =  $request->type;
+            $option->type            =  $request->select_option_type;
+            if ($request->select_option_type == 'dropdown' || $request->select_option_type == 'radio') {
+                $data = array_filter($request->option);
+                $option->value =  json_encode($data);
+            }
+            $option->save();
+            return redirect()->route('admin.question.index', $request->type)->with('Success', 'Question added success');
+        } catch (\Throwable $e) {
+            \DB::rollback();
+            return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
         }
-        $option->save();
-        return redirect()->route('admin.question.index',$request->type)->with('Success', 'Question added success');
-    } catch (\Throwable $e) {
-        \DB::rollback();
-        return redirect()->back()->with(['Failed' => $e->getMessage() . ' on line ' . $e->getLine()]);
-    }
     }
 
     /**
@@ -103,15 +101,13 @@ class QuestionController extends Controller
     {
         try {
             $questions  = Question::findOrFail($id);
-            $questions->fill($request->only('question', 'type'));
+            $questions->fill($request->only('question', 'type', 'question_heading'));
             $questions->save();
-
             Option::where('question_id', $id)->delete();
             $option = new Option();
             $option->question_id     =  $questions->id;
             $option->question_type   =  $request->type;
             $option->type            =  $request->select_option_type;
-
             if ($request->select_option_type == 'dropdown' || $request->select_option_type == 'radio') {
                 $data = array_filter($request->option);
                 $option->value =  json_encode($data);
